@@ -1,5 +1,158 @@
 return {
-
+    ["backpack1"] = {
+		label = "Small Backpack",
+		weight = 15,
+		stack = false,
+		close = true,
+		description = "A stylish backpack"
+   },
+   ["backpack2"] = {
+		label = "Medium Backpack",
+		weight = 15,
+		stack = false,
+		close = true,
+		description = "A stylish backpack"
+   },
+   ["backpack3"] = {
+		label = "Large Backpack",
+		weight = 15,
+		stack = false,
+		close = true,
+		description = "A stylish backpack"
+   },
+   ["duffle1"] = {
+		label = "Duffle bag",
+		weight = 15,
+		stack = false,
+		close = true,
+		description = "A stylish duffle bag"
+   },
+   ["briefcase"] = {
+		label = "Briefcase",
+		weight = 10,
+		stack = false,
+		close = true,
+		description = "A portable rectangular case used for carrying important documents, files, or other personal belongings."
+   },
+   ["paramedicbag"] = {
+		label = "Paramedic bag",
+		weight = 5,
+		stack = false,
+		close = true,
+		description = "A medical bag used by paramedics, containing essential supplies for emergency care."
+   },
+   ["policepouches"] = {
+		label = "Police Pouch",
+		weight = 5,
+		stack = false,
+		close = true,
+		description = "A pouch used by police officers to store and carry essential supplies such as handcuffs, pepper spray, and other tactical equipment."
+   },
+   ["policepouches1"] = {
+		label = "Police Pouch",
+		weight = 5,
+		stack = false,
+		close = true,
+		description = "A larger version of the police pouch used to store additional tactical gear and equipment."
+   },
+   
+   ["briefcaselockpicker"] = {
+		label = "Briefcase Lockpicker",
+		weight = 0.5,
+		stack = true,
+		close = true,
+		description = "Briefcase Lockpicker"
+   },
+   
+    ['meatdeer'] = {
+		label = 'Deer Horns',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Deer Horns',
+		img = 'deerhorns.png',
+		client = {},
+	},
+	
+	['meatpig'] = {
+		label = 'Pig Meat',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Pig Meat',
+		img = 'pigpelt.png',
+		client = {},
+	},
+	
+	['meatboar'] = {
+		label = 'Boar Tusks',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Boar Tusks',
+		img = 'boartusks.png',
+		client = {},
+	},
+	
+	['meatlion'] = {
+		label = 'Cougar Claws',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Cougar Claw',
+		img = 'cougarclaw.png',
+		client = {},
+	},
+	
+	['meatcow'] = {
+		label = 'Cow Pelt',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Cow Pelt',
+		img = 'cowpelt.png',
+		client = {},
+	},
+	
+	['meatrabbit'] = {
+		label = 'Rabbit Fur',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Rabbit Fur',
+		img = 'rabbitfur.png',
+		client = {},
+	},
+	
+	['meatbird'] = {
+		label = 'Bird Feather',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Bird Feather',
+		img = 'birdfeather.png',
+		client = {},
+	},
+	
+	['meatcoyote'] = {
+		label = 'Coyote Pelt',
+		weight = 100,
+		stack = true,
+		close = false,
+		description = 'Coyote Pelt',
+		img = 'coyotepelt.png',
+		client = {},
+	},
+	
+	['huntingbait'] = {
+		label = 'Hunting Bait',
+		weight = 150,
+		stack = true,
+		close = true,
+		description = 'Hunting Bait',
+		img = 'huntingbait.png',
+		client = {},
+	},
     ['policetablet'] = {
         label = 'Police Tablet',
         weight = 5000,
@@ -20,7 +173,7 @@ return {
             image = 'renting_contract.png'
         }
     },
-    
+
     ['testburger'] = {
         label = 'Test Burger',
         weight = 220,
