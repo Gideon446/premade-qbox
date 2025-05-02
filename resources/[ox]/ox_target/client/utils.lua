@@ -18,8 +18,7 @@ function utils.raycastFromCamera(flag)
 
     while true do
         Wait(0)
-        local retval, hit, endCoords, surfaceNormal, materialHash, entityHit = GetShapeTestResultIncludingMaterial(
-        handle)
+        local retval, hit, endCoords, surfaceNormal, materialHash, entityHit = GetShapeTestResultIncludingMaterial(handle)
 
         if retval ~= 1 then
             ---@diagnostic disable-next-line: return-type-mismatch
@@ -54,12 +53,10 @@ function utils.getNearbyZones(coords)
     if not Zones then return currentZones, false end
 
     local n = 0
-    local nearbyZones = lib.zones.getNearbyZones()
     drawN = 0
     previousZones, currentZones = currentZones, table.wipe(previousZones)
 
-    for i = 1, #nearbyZones do
-        local zone = nearbyZones[i]
+    for _, zone in pairs(Zones) do
         local contains = zone:contains(coords)
 
         if contains then
@@ -198,6 +195,8 @@ SetTimeout(0, function()
         require 'client.framework.ox'
     elseif utils.hasExport('es_extended.getSharedObject') then
         require 'client.framework.esx'
+    elseif utils.hasExport('qb-core.GetCoreObject') then
+        require 'client.framework.qb'
     elseif utils.hasExport('qbx_core.HasGroup') then
         require 'client.framework.qbx'
     elseif utils.hasExport('ND_Core.getPlayer') then
