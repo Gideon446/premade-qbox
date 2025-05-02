@@ -1,4 +1,26 @@
 return {
+
+    ['policetablet'] = {
+        label = 'Police Tablet',
+        weight = 5000,
+        stack = false,
+        close = true,
+        description = 'A mobile fingerprint tablet.',
+        client = {
+            image = 'policetablet.png',
+        }
+    },
+    ['renting_contract'] = {
+        label = 'Renting Contract',
+        weight = 500,
+        stack = false,
+        close = true,
+        description = '',
+        client = {
+            image = 'renting_contract.png'
+        }
+    },
+    
     ['testburger'] = {
         label = 'Test Burger',
         weight = 220,

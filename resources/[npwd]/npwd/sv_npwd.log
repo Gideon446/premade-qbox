@@ -32,3 +32,114 @@
 {"level":"info","message":"Executed query (SELECT COUNT(*) as count\n                       FROM information_schema.tables\n                       WHERE table_schema = ?\n                         AND table_name = ? [\"QboxFramework_1515C6\",\"players\"]) in 74.7934ms'","module":"DBInterface","timestamp":"2025-05-02T19:12:20.493Z"}
 {"level":"info","message":"Executed query (SHOW COLUMNS IN players []) in 29.8606ms'","module":"DBInterface","timestamp":"2025-05-02T19:12:20.523Z"}
 {"level":"debug","message":"Database schema successfully validated","module":"boot","timestamp":"2025-05-02T19:12:20.523Z"}
+{"level":"debug","message":"Marketplace service started","module":"marketplace","timestamp":"2025-05-02T19:26:37.726Z"}
+{"level":"debug","message":"Call service started","module":"calls","timestamp":"2025-05-02T19:26:37.728Z"}
+{"level":"debug","message":"Player Service started","module":"player","timestamp":"2025-05-02T19:26:37.728Z"}
+{"level":"info","message":"Loading QBX bridge....","timestamp":"2025-05-02T19:26:37.729Z"}
+{"level":"info","message":"QBX bridge initialized","timestamp":"2025-05-02T19:26:37.729Z"}
+{"level":"debug","message":"Boot service started","module":"boot","timestamp":"2025-05-02T19:26:37.729Z"}
+{"level":"debug","message":"Messages service started","module":"messages","timestamp":"2025-05-02T19:26:37.730Z"}
+{"level":"debug","message":"Notes service started","module":"notes","timestamp":"2025-05-02T19:26:37.730Z"}
+{"level":"debug","message":"Contacts service started","module":"contact","timestamp":"2025-05-02T19:26:37.730Z"}
+{"level":"debug","message":"Photo service started","module":"photo","timestamp":"2025-05-02T19:26:37.744Z"}
+{"level":"debug","message":"Twitter service started","module":"twitter","timestamp":"2025-05-02T19:26:37.745Z"}
+{"level":"debug","message":"Match service started","module":"match","timestamp":"2025-05-02T19:26:37.746Z"}
+{"level":"debug","message":"Beginning database schema validation","module":"boot","timestamp":"2025-05-02T19:26:39.018Z"}
+{"level":"info","message":"Successfully started","timestamp":"2025-05-02T19:26:39.035Z"}
+{"level":"info","message":"Executed query (SELECT COUNT(*) as count\n                       FROM information_schema.tables\n                       WHERE table_schema = ?\n                         AND table_name = ? [\"QboxFramework_1515C6\",\"players\"]) in 88.4795ms'","module":"DBInterface","timestamp":"2025-05-02T19:26:39.107Z"}
+{"level":"info","message":"Executed query (SHOW COLUMNS IN players []) in 41.3519ms'","module":"DBInterface","timestamp":"2025-05-02T19:26:39.149Z"}
+{"level":"debug","message":"Database schema successfully validated","module":"boot","timestamp":"2025-05-02T19:26:39.149Z"}
+{"level":"info","message":"New NPWD Player added through event (1) (BF6EEM9D)","module":"player","timestamp":"2025-05-02T19:28:10.763Z"}
+{"level":"debug","message":{"_firstname":"Damon","_identifier":"BF6EEM9D","_lastname":"Walker","_phoneNumber":"4243343974","source":1,"username":"Damon </>"},"module":"player","timestamp":"2025-05-02T19:28:10.763Z"}
+{"level":"info","message":"New NPWD Player added through event (1) (BF6EEM9D)","module":"player","timestamp":"2025-05-02T19:28:10.773Z"}
+{"level":"debug","message":{"_firstname":"Damon","_identifier":"BF6EEM9D","_lastname":"Walker","_phoneNumber":"4243343974","source":1,"username":"Damon </>"},"module":"player","timestamp":"2025-05-02T19:28:10.774Z"}
+{"level":"silly","message":"netPromise > npwd:fetchTweets > RequestObj","module":"events","timestamp":"2025-05-02T19:28:10.860Z"}
+{"level":"silly","message":{"data":{"pageId":0},"source":1},"module":"events","timestamp":"2025-05-02T19:28:10.861Z"}
+{"level":"info","message":"Executed query (\n        SELECT *\n        FROM npwd_twitter_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 10.6633ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:10.872Z"}
+{"level":"warn","message":"Aborted fetching tweets for user BF6EEM9D because they do not have a profile.","module":"twitter","timestamp":"2025-05-02T19:28:10.873Z"}
+{"level":"silly","message":"Response Promise Event npwd:fetchTweets:927b26ce-67c7-4826-9cd0-a3467b481f38 (12.4453ms), Data >>","module":"events","timestamp":"2025-05-02T19:28:10.873Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T19:28:10.873Z"}
+{"level":"silly","message":"netPromise > npwd:getOrCreateTwitterProfile > RequestObj","module":"events","timestamp":"2025-05-02T19:28:10.971Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T19:28:10.971Z"}
+{"level":"silly","message":"netPromise > phone:getMyProfile > RequestObj","module":"events","timestamp":"2025-05-02T19:28:10.973Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T19:28:10.974Z"}
+{"level":"silly","message":"netPromise > npwd:fetchMessageGroups > RequestObj","module":"events","timestamp":"2025-05-02T19:28:10.976Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T19:28:10.976Z"}
+{"level":"silly","message":"netPromise > npwd-contact-getAll > RequestObj","module":"events","timestamp":"2025-05-02T19:28:10.980Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T19:28:10.980Z"}
+{"level":"info","message":"Executed query (\n        SELECT *\n        FROM npwd_twitter_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 20.7319ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:10.995Z"}
+{"level":"info","message":"Creating default Twitter profile Damon_Walker for BF6EEM9D","module":"twitter","timestamp":"2025-05-02T19:28:10.996Z"}
+{"level":"info","message":"Executed query (\n        SELECT *,\n               UNIX_TIMESTAMP(updatedAt) AS lastActive\n        FROM npwd_match_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 44.7139ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:11.019Z"}
+{"level":"info","message":"Creating default match profile Damon Walker for BF6EEM9D","module":"match","timestamp":"2025-05-02T19:28:11.019Z"}
+{"level":"info","message":"Executed query (SELECT * FROM npwd_phone_contacts WHERE identifier = ? ORDER BY display ASC [\"BF6EEM9D\"]) in 41.6214ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:11.022Z"}
+{"level":"info","message":"Executed query (\n        SELECT *\n        FROM npwd_twitter_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 13.0768ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:11.025Z"}
+{"level":"silly","message":"Response Promise Event npwd-contact-getAll:fdedcdff-ed9c-4a00-962e-aaeda0ec87e1 (42.6426ms), Data >>","module":"events","timestamp":"2025-05-02T19:28:11.022Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T19:28:11.022Z"}
+{"level":"silly","message":"Response Promise Event npwd:getOrCreateTwitterProfile:aafd9d38-9afd-4f12-b077-920852a714bf (54.9838ms), Data >>","module":"events","timestamp":"2025-05-02T19:28:11.026Z"}
+{"level":"silly","message":{"data":{"avatar_url":"https://i.fivemanage.com/images/3ClWwmpwkFhL.png","createdAt":"2025-05-02T19:28:11.000Z","id":1,"identifier":"BF6EEM9D","profile_name":"Damon_Walker","updatedAt":"2025-05-02T19:28:11.000Z"},"status":"ok"},"module":"events","timestamp":"2025-05-02T19:28:11.028Z"}
+{"level":"info","message":"Executed query (SELECT npwd_messages_conversations.id,\n                          npwd_messages_conversations.conversation_list         as conversationList,\n                          npwd_messages_participants.unread_count               as unreadCount,\n                          npwd_messages_conversations.is_group_chat             as isGroupChat,\n                          npwd_messages_conversations.label,\n                          UNIX_TIMESTAMP(npwd_messages_conversations.updatedAt) as updatedAt,\n                          npwd_messages_participants.participant\n                   FROM npwd_messages_conversations\n                            INNER JOIN npwd_messages_participants\n                                       on npwd_messages_conversations.id = npwd_messages_participants.conversation_id\n                   WHERE npwd_messages_participants.participant = ? [\"4243343974\"]) in 60.1641ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:11.037Z"}
+{"level":"silly","message":"Response Promise Event npwd:fetchMessageGroups:4ce084e6-3afb-471d-976c-b95aec27ea6e (61.6658ms), Data >>","module":"events","timestamp":"2025-05-02T19:28:11.041Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T19:28:11.042Z"}
+{"level":"info","message":"Executed query (\n        SELECT *,\n               UNIX_TIMESTAMP(updatedAt) AS lastActive\n        FROM npwd_match_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 3.7686ms'","module":"DBInterface","timestamp":"2025-05-02T19:28:11.052Z"}
+{"level":"silly","message":"Response Promise Event phone:getMyProfile:b5975fb0-3446-40fb-b01d-cf06401ab8e5 (81.634ms), Data >>","module":"events","timestamp":"2025-05-02T19:28:11.055Z"}
+{"level":"silly","message":{"data":{"bio":"","createdAt":"2025-05-02T19:28:11.000Z","id":1,"identifier":"BF6EEM9D","image":"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg","job":"","lastActive":1746214091,"lastActiveFormatted":"Fri, 02 May 2025 19:28:11 GMT","location":"","name":"Damon Walker","tagList":[],"tags":"","updatedAt":"2025-05-02T19:28:11.000Z","viewed":false,"voiceMessage":null},"status":"ok"},"module":"events","timestamp":"2025-05-02T19:28:11.055Z"}
+{"level":"silly","message":"netPromise > npwd:fetchAllNotes > RequestObj","module":"events","timestamp":"2025-05-02T20:00:59.118Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T20:00:59.122Z"}
+{"level":"info","message":"Executed query (SELECT * FROM npwd_notes WHERE identifier = ? ORDER BY id DESC [\"BF6EEM9D\"]) in 16.5295ms'","module":"DBInterface","timestamp":"2025-05-02T20:00:59.141Z"}
+{"level":"silly","message":"Response Promise Event npwd:fetchAllNotes:70d59b99-c67f-4dd4-8b96-ea388a764d04 (24.5108ms), Data >>","module":"events","timestamp":"2025-05-02T20:00:59.141Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T20:00:59.141Z"}
+{"level":"silly","message":"netPromise > phone:getMatchProfiles > RequestObj","module":"events","timestamp":"2025-05-02T20:01:02.724Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T20:01:02.724Z"}
+{"level":"info","message":"Executed query (\n        SELECT npwd_match_profiles.*,\n               UNIX_TIMESTAMP(npwd_match_profiles.updatedAt) AS lastActive,\n               MaxDates.lastSeen,\n               MaxDates.liked\n        FROM npwd_match_profiles\n                 LEFT OUTER JOIN (\n            SELECT id, profile, liked, MAX(createdAt) AS lastSeen\n            FROM npwd_match_views\n            WHERE identifier = ?\n            GROUP BY id, profile, liked\n        ) AS MaxDates ON npwd_match_profiles.id = MaxDates.profile\n        WHERE npwd_match_profiles.identifier != ?\n          AND (MaxDates.lastSeen IS NULL OR MaxDates.lastSeen < NOW() - INTERVAL 7 DAY)\n          AND MaxDates.liked IS NULL\n        ORDER BY npwd_match_profiles.updatedAt DESC\n        LIMIT 25\n\t\t [\"BF6EEM9D\",\"BF6EEM9D\"]) in 21.942ms'","module":"DBInterface","timestamp":"2025-05-02T20:01:02.748Z"}
+{"level":"silly","message":"Response Promise Event phone:getMatchProfiles:9fa2f920-a046-4779-9568-b53468b126d1 (24.845ms), Data >>","module":"events","timestamp":"2025-05-02T20:01:02.748Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T20:01:02.748Z"}
+{"level":"info","message":"Executed query (SELECT id FROM npwd_marketplace_listings WHERE identifier = ? [\"BF6EEM9D\"]) in 24.382ms'","module":"DBInterface","timestamp":"2025-05-02T20:37:24.861Z"}
+{"level":"info","message":"Executed query (DELETE FROM npwd_marketplace_listings WHERE identifier = ? AND reported = 0 [\"BF6EEM9D\"]) in 1.7954ms'","module":"DBInterface","timestamp":"2025-05-02T20:37:24.863Z"}
+{"level":"info","message":"Unloaded NPWD Player, source: (1)","module":"player","timestamp":"2025-05-02T20:37:24.863Z"}
+{"level":"debug","message":"Marketplace service started","module":"marketplace","timestamp":"2025-05-02T20:37:43.102Z"}
+{"level":"debug","message":"Call service started","module":"calls","timestamp":"2025-05-02T20:37:43.105Z"}
+{"level":"debug","message":"Player Service started","module":"player","timestamp":"2025-05-02T20:37:43.105Z"}
+{"level":"info","message":"Loading QBX bridge....","timestamp":"2025-05-02T20:37:43.106Z"}
+{"level":"info","message":"QBX bridge initialized","timestamp":"2025-05-02T20:37:43.106Z"}
+{"level":"debug","message":"Boot service started","module":"boot","timestamp":"2025-05-02T20:37:43.106Z"}
+{"level":"debug","message":"Messages service started","module":"messages","timestamp":"2025-05-02T20:37:43.106Z"}
+{"level":"debug","message":"Notes service started","module":"notes","timestamp":"2025-05-02T20:37:43.107Z"}
+{"level":"debug","message":"Contacts service started","module":"contact","timestamp":"2025-05-02T20:37:43.107Z"}
+{"level":"debug","message":"Photo service started","module":"photo","timestamp":"2025-05-02T20:37:43.120Z"}
+{"level":"debug","message":"Twitter service started","module":"twitter","timestamp":"2025-05-02T20:37:43.120Z"}
+{"level":"debug","message":"Match service started","module":"match","timestamp":"2025-05-02T20:37:43.121Z"}
+{"level":"debug","message":"Beginning database schema validation","module":"boot","timestamp":"2025-05-02T20:37:44.273Z"}
+{"level":"info","message":"Successfully started","timestamp":"2025-05-02T20:37:44.290Z"}
+{"level":"info","message":"Executed query (SELECT COUNT(*) as count\n                       FROM information_schema.tables\n                       WHERE table_schema = ?\n                         AND table_name = ? [\"QboxFramework_1515C6\",\"players\"]) in 85.5912ms'","module":"DBInterface","timestamp":"2025-05-02T20:37:44.359Z"}
+{"level":"info","message":"Executed query (SHOW COLUMNS IN players []) in 40.6894ms'","module":"DBInterface","timestamp":"2025-05-02T20:37:44.400Z"}
+{"level":"debug","message":"Database schema successfully validated","module":"boot","timestamp":"2025-05-02T20:37:44.400Z"}
+{"level":"info","message":"New NPWD Player added through event (1) (BF6EEM9D)","module":"player","timestamp":"2025-05-02T20:39:15.772Z"}
+{"level":"debug","message":{"_firstname":"Damon","_identifier":"BF6EEM9D","_lastname":"Walker","_phoneNumber":"4243343974","source":1,"username":"Damon </>"},"module":"player","timestamp":"2025-05-02T20:39:15.772Z"}
+{"level":"info","message":"New NPWD Player added through event (1) (BF6EEM9D)","module":"player","timestamp":"2025-05-02T20:39:15.787Z"}
+{"level":"debug","message":{"_firstname":"Damon","_identifier":"BF6EEM9D","_lastname":"Walker","_phoneNumber":"4243343974","source":1,"username":"Damon </>"},"module":"player","timestamp":"2025-05-02T20:39:15.787Z"}
+{"level":"silly","message":"netPromise > npwd:fetchTweets > RequestObj","module":"events","timestamp":"2025-05-02T20:39:15.820Z"}
+{"level":"silly","message":{"data":{"pageId":0},"source":1},"module":"events","timestamp":"2025-05-02T20:39:15.820Z"}
+{"level":"info","message":"Executed query (\n        SELECT *\n        FROM npwd_twitter_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 11.4049ms'","module":"DBInterface","timestamp":"2025-05-02T20:39:15.833Z"}
+{"level":"info","message":"Executed query (\n        SELECT \n  npwd_twitter_tweets.id,\n  npwd_twitter_tweets.identifier,\n  npwd_twitter_profiles.id AS profile_id,\n  npwd_twitter_profiles.profile_name,\n  npwd_twitter_profiles.avatar_url,\n  npwd_twitter_tweets.likes,\n  npwd_twitter_tweets.visible,\n  IFNULL(COALESCE(retweets.message, npwd_twitter_tweets.message), '') AS message,\n  IFNULL(COALESCE(retweets.images, npwd_twitter_tweets.images), '') AS images,\n  npwd_twitter_tweets.retweet IS NOT NULL AS isRetweet,\n  retweets.id AS retweetId,\n  retweets_profiles.profile_name AS retweetProfileName,\n  retweets_profiles.avatar_url AS retweetAvatarUrl,\n  npwd_twitter_likes.id IS NOT NULL AS isLiked,\n  npwd_twitter_reports.id IS NOT NULL AS isReported,\n  npwd_twitter_tweets.createdAt,\n  npwd_twitter_tweets.updatedAt,\n  TIME_TO_SEC(TIMEDIFF( NOW(), npwd_twitter_tweets.createdAt)) AS seconds_since_tweet\n\n        FROM npwd_twitter_tweets\n                 LEFT OUTER JOIN npwd_twitter_profiles\n                                 ON npwd_twitter_tweets.identifier = npwd_twitter_profiles.identifier\n                 LEFT OUTER JOIN npwd_twitter_likes ON npwd_twitter_tweets.id = npwd_twitter_likes.tweet_id AND\n                                                       npwd_twitter_likes.profile_id = ?\n                 LEFT OUTER JOIN npwd_twitter_reports ON npwd_twitter_tweets.id = npwd_twitter_reports.tweet_id AND\n                                                         npwd_twitter_reports.profile_id = ?\n                 LEFT OUTER JOIN npwd_twitter_tweets AS retweets ON retweets.id = npwd_twitter_tweets.retweet\n                 LEFT OUTER JOIN npwd_twitter_profiles AS retweets_profiles\n                                 ON retweets.identifier = retweets_profiles.identifier\n        WHERE npwd_twitter_tweets.visible = 1\n        ORDER BY id DESC\n        LIMIT ? OFFSET ?\n\t\t [1,1,\"25\",\"0\"]) in 66.7088ms'","module":"DBInterface","timestamp":"2025-05-02T20:39:15.900Z"}
+{"level":"silly","message":"Response Promise Event npwd:fetchTweets:cc70aa58-7629-4e97-b24f-4c94c470fa96 (80.1366ms), Data >>","module":"events","timestamp":"2025-05-02T20:39:15.900Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T20:39:15.901Z"}
+{"level":"silly","message":"netPromise > npwd:getOrCreateTwitterProfile > RequestObj","module":"events","timestamp":"2025-05-02T20:39:16.022Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T20:39:16.023Z"}
+{"level":"silly","message":"netPromise > phone:getMyProfile > RequestObj","module":"events","timestamp":"2025-05-02T20:39:16.028Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T20:39:16.028Z"}
+{"level":"silly","message":"netPromise > npwd:fetchMessageGroups > RequestObj","module":"events","timestamp":"2025-05-02T20:39:16.030Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T20:39:16.031Z"}
+{"level":"silly","message":"netPromise > npwd-contact-getAll > RequestObj","module":"events","timestamp":"2025-05-02T20:39:16.035Z"}
+{"level":"silly","message":{"data":null,"source":1},"module":"events","timestamp":"2025-05-02T20:39:16.035Z"}
+{"level":"info","message":"Executed query (\n        SELECT *\n        FROM npwd_twitter_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 42.3806ms'","module":"DBInterface","timestamp":"2025-05-02T20:39:16.066Z"}
+{"level":"silly","message":"Response Promise Event npwd:getOrCreateTwitterProfile:1bbc90e7-6623-4ac0-8fed-67fd23af3f50 (43.6388ms), Data >>","module":"events","timestamp":"2025-05-02T20:39:16.066Z"}
+{"level":"silly","message":{"data":{"avatar_url":"https://i.fivemanage.com/images/3ClWwmpwkFhL.png","createdAt":"2025-05-02T19:28:11.000Z","id":1,"identifier":"BF6EEM9D","profile_name":"Damon_Walker","updatedAt":"2025-05-02T19:28:11.000Z"},"status":"ok"},"module":"events","timestamp":"2025-05-02T20:39:16.066Z"}
+{"level":"info","message":"Executed query (SELECT npwd_messages_conversations.id,\n                          npwd_messages_conversations.conversation_list         as conversationList,\n                          npwd_messages_participants.unread_count               as unreadCount,\n                          npwd_messages_conversations.is_group_chat             as isGroupChat,\n                          npwd_messages_conversations.label,\n                          UNIX_TIMESTAMP(npwd_messages_conversations.updatedAt) as updatedAt,\n                          npwd_messages_participants.participant\n                   FROM npwd_messages_conversations\n                            INNER JOIN npwd_messages_participants\n                                       on npwd_messages_conversations.id = npwd_messages_participants.conversation_id\n                   WHERE npwd_messages_participants.participant = ? [\"4243343974\"]) in 47.0059ms'","module":"DBInterface","timestamp":"2025-05-02T20:39:16.081Z"}
+{"level":"silly","message":"Response Promise Event npwd:fetchMessageGroups:83c14f4d-d28c-4813-9a09-7caddf4904e7 (50.6403ms), Data >>","module":"events","timestamp":"2025-05-02T20:39:16.081Z"}
+{"level":"info","message":"Executed query (SELECT * FROM npwd_phone_contacts WHERE identifier = ? ORDER BY display ASC [\"BF6EEM9D\"]) in 47.2376ms'","module":"DBInterface","timestamp":"2025-05-02T20:39:16.082Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T20:39:16.082Z"}
+{"level":"info","message":"Executed query (\n        SELECT *,\n               UNIX_TIMESTAMP(updatedAt) AS lastActive\n        FROM npwd_match_profiles\n        WHERE identifier = ?\n        LIMIT 1\n\t\t [\"BF6EEM9D\"]) in 54.703ms'","module":"DBInterface","timestamp":"2025-05-02T20:39:16.084Z"}
+{"level":"silly","message":"Response Promise Event npwd-contact-getAll:3c83edd6-e3b9-413a-b16a-1703a2e352d7 (48.0513ms), Data >>","module":"events","timestamp":"2025-05-02T20:39:16.083Z"}
+{"level":"silly","message":{"data":[],"status":"ok"},"module":"events","timestamp":"2025-05-02T20:39:16.083Z"}
+{"level":"silly","message":"Response Promise Event phone:getMyProfile:ab0fce22-21f2-45b1-9e1d-1d88f7181674 (59.8484ms), Data >>","module":"events","timestamp":"2025-05-02T20:39:16.088Z"}
+{"level":"silly","message":{"data":{"bio":"","createdAt":"2025-05-02T19:28:11.000Z","id":1,"identifier":"BF6EEM9D","image":"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg","job":"","lastActive":1746214091,"lastActiveFormatted":"Fri, 02 May 2025 19:28:11 GMT","location":"","name":"Damon Walker","tagList":[],"tags":"","updatedAt":"2025-05-02T19:28:11.000Z","viewed":false,"voiceMessage":null},"status":"ok"},"module":"events","timestamp":"2025-05-02T20:39:16.088Z"}
