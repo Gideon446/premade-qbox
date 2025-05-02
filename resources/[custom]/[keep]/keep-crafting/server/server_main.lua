@@ -9,14 +9,15 @@ end
 
 RegisterNetEvent("keep-crafting:server:sendcraftmail", function(msgg)
      local src = source
-     local insertId, received = exports.yseries:SendMail({
-         title = "Crafting Details",
-         sender = 'Crafting@scrp.fivem',
-         senderDisplayName = 'Crafting System',
-         content = msgg,
-         actions = {},
-         attachments = {}
-     }, 'source', src)
+     -- local insertId, received = exports.yseries:SendMail({
+     --     title = "Crafting Details",
+     --     sender = 'Crafting@scrp.fivem',
+     --     senderDisplayName = 'Crafting System',
+     --     content = msgg,
+     --     actions = {},
+     --     attachments = {}
+     -- }, 'source', src)
+
  end)
  
 

@@ -49,6 +49,13 @@ RegisterNetEvent('keep-crafting:client:local_mailer', function(data)
 
     msg = msg .. "\nThank you for using the crafting system!"
 
-    -- ✅ Corrected: Send mail via server-side event
-    TriggerServerEvent('keep-crafting:server:sendcraftmail', msg)
+    exports["npwd"]:createNotification({
+        notisId = "npwd:tweetBroadcast",
+        appId = "MESSAGES",
+        content = msg,
+        secondaryTitle = "Crafting System",
+        keepOpen = false,
+        duration = 5000,
+        path = "/messages",
+    })
 end)

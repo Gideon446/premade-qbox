@@ -376,204 +376,206 @@ end
 ------------------
 
 function QbMenu:main_categories()
-     -- workbench.recipes.categories
      if Workbench == nil then return end
-     local Menu = {}
-     Menu[#Menu + 1] = {
-          header = Lang:t('menu.main_menu_header'),
-          icon = 'fa-solid fa-wrench',
-          disabled = true
-     }
 
+     local options = {}
+     
+     -- Header (disabled, just for display, not clickable)
+     options[#options + 1] = {
+         title = Lang:t('menu.main_menu_header'),
+         icon = 'fa-solid fa-wrench',
+         disabled = true
+     }
+     
+     -- Loop through categories
      for key, category in pairs(Workbench.categories) do
-          -- main menu + sub menu ref
-          if category.sub_categories then
-               Menu[#Menu + 1] = {
-                    header = category.label,
-                    icon = category.icon or 'fa-solid fa-caret-right',
-                    params = {
-                         args = {
-                              category.sub_categories
-                         },
-                         event = 'keep-crafting:client_lib:sub_categories'
-                    }
-               }
-          else
-               Menu[#Menu + 1] = {
-                    header = category.label,
-                    icon = category.icon or 'fa-solid fa-caret-right',
-                    params = {
-                         args = {
-                              category.key, 'main'
-                         },
-                         event = 'keep-crafting:client_lib:crafting_items_list'
-                    }
-               }
-          end
+         if category.sub_categories then
+             options[#options + 1] = {
+                 title = category.label,
+                 icon = category.icon or 'fa-solid fa-caret-right',
+                 event = 'keep-crafting:client_lib:sub_categories',
+                 args = category.sub_categories
+             }
+         else
+             options[#options + 1] = {
+                 title = category.label,
+                 icon = category.icon or 'fa-solid fa-caret-right',
+                 event = 'keep-crafting:client_lib:crafting_items_list',
+                 args = {
+                     category.key, 'main'
+                 }
+             }
+         end
      end
-
-     Menu[#Menu + 1] = {
-          header = Lang:t('menu.player_crafting_information'),
-          icon = 'fa-solid fa-circle-info',
-          params = {
-               event = 'keep-crafting:client_lib:player_crafting_information'
-          },
+     
+     -- Player crafting info
+     options[#options + 1] = {
+         title = Lang:t('menu.player_crafting_information'),
+         icon = 'fa-solid fa-circle-info',
+         event = 'keep-crafting:client_lib:player_crafting_information'
      }
-
-     Menu[#Menu + 1] = {
-          header = Lang:t('menu.leave'),
-          icon = 'fa-solid fa-circle-xmark',
-          params = {
-               event = "qb-menu:closeMenu",
-          },
+     
+     -- Leave/close menu
+     options[#options + 1] = {
+         title = Lang:t('menu.leave'),
+         icon = 'fa-solid fa-circle-xmark',
+         event = 'qb-menu:closeMenu'
      }
-
-     exports['qb-menu']:openMenu(Menu)
+     
+     -- Register and show menu
+     lib.registerContext({
+         id = 'workbench_main_menu',
+         title = Lang:t('menu.main_menu_header'),
+         options = options
+     })
+     
+     lib.showContext('workbench_main_menu')
+     
 end
 
 function QbMenu:player_crafting_information()
      QBCore.Functions.TriggerCallback('keep-crafting:server:get_player_information', function(result)
           local job_sub = Lang:t("menu.job_sub")
           job_sub = string.format(job_sub, result.job.name, result.job.grade.name)
-          local Menu = {
+          local options = {
                {
-                    header = Lang:t("menu.back"),
-                    params = {
-                         event = 'keep-crafting:client_lib:main_categories'
-                    }
+                   title = Lang:t("menu.back"),
+                   icon = 'fa-solid fa-arrow-left',
+                   event = 'keep-crafting:client_lib:main_categories'
                },
                {
-                    header = Lang:t('menu.your_name'),
-                    txt = result.charinfo.firstname .. ' ' .. result.charinfo.lastname,
-                    icon = 'fa-solid fa-list-ol',
-                    disabled = true
+                   title = Lang:t('menu.your_name'),
+                   description = result.charinfo.firstname .. ' ' .. result.charinfo.lastname,
+                   icon = 'fa-solid fa-list-ol',
+                   disabled = true
                },
                {
-                    header = Lang:t('menu.your_job'),
-                    txt = job_sub,
-                    icon = 'fa-solid fa-list-ol',
-                    disabled = true
+                   title = Lang:t('menu.your_job'),
+                   description = job_sub,
+                   icon = 'fa-solid fa-list-ol',
+                   disabled = true
                },
                {
-                    header = Lang:t('menu.crafting_exp'),
-                    txt = tostring(result.metadata.craftingrep),
-                    icon = 'fa-solid fa-list-ol',
-                    disabled = true
+                   title = Lang:t('menu.crafting_exp'),
+                   description = tostring(result.metadata.craftingrep),
+                   icon = 'fa-solid fa-list-ol',
+                   disabled = true
                },
                {
-                    header = Lang:t('menu.leave'),
-                    icon = 'fa-solid fa-circle-xmark',
-                    params = {
-                         event = "qb-menu:closeMenu",
-                    },
+                   title = Lang:t('menu.leave'),
+                   icon = 'fa-solid fa-circle-xmark',
+                   event = 'qb-menu:closeMenu' -- optional: replace with lib.hideContext() via event
                }
-          }
-          exports['qb-menu']:openMenu(Menu)
+           }
+           
+           lib.registerContext({
+               id = 'player_crafting_info',
+               title = Lang:t('menu.player_crafting_information'),
+               options = options
+           })
+           
+           lib.showContext('player_crafting_info')
+           
      end)
 end
 
 function QbMenu:sub_categories(args)
      -- args[1] is data used by current menu
      -- args[2] is previous menu cached data (make possible to go back in menus)
-     local Menu = {}
-     Menu[#Menu + 1] = {
-          header = Lang:t("menu.back"),
-          icon = 'fa-solid fa-angle-left',
-          params = {
-               event = 'keep-crafting:client_lib:main_categories'
+     local options = {
+          {
+              title = Lang:t("menu.back"),
+              icon = 'fa-solid fa-angle-left',
+              event = 'keep-crafting:client_lib:main_categories'
           }
-     }
-
-     for key, sub in pairs(args[1]) do
-          Menu[#Menu + 1] = {
-               header = sub.label,
-               icon = 'fa-solid fa-gun',
-               params = {
-                    args = {
-                         key, args
-                    },
-                    event = 'keep-crafting:client_lib:crafting_items_list'
-               }
+      }
+      
+      for key, sub in pairs(args[1]) do
+          options[#options + 1] = {
+              title = sub.label,
+              icon = 'fa-solid fa-gun',
+              event = 'keep-crafting:client_lib:crafting_items_list',
+              args = { key, args }
           }
-     end
-
-     Menu[#Menu + 1] = {
-          header = Lang:t('menu.leave'),
-          params = {
-               event = 'qb-menu:closeMenu'
-          }
-     }
-
-     exports["qb-menu"]:openMenu(Menu)
+      end
+      
+      options[#options + 1] = {
+          title = Lang:t('menu.leave'),
+          icon = 'fa-solid fa-circle-xmark',
+          event = 'qb-menu:closeMenu' -- or replace with your own context-close logic
+      }
+      
+      lib.registerContext({
+          id = 'sub_categories_menu',
+          title = Lang:t("menu.sub_category_title") or 'Subcategories',
+          options = options
+      })
+      
+      lib.showContext('sub_categories_menu')
+      
 end
 
 function QbMenu:crafting_items_list(data)
      local items = search_for_items_in_category(data[1])
      local craftingrep = QBCore.Functions.GetPlayerData().metadata.craftingrep
-     local Menu = {}
+     local options = {}
 
-     if type(data[2]) == "table" then
-          Menu[#Menu + 1] = {
-               header = Lang:t("menu.back"),
-               icon = 'fa-solid fa-angle-left',
-               params = {
-                    args = data[2],
-                    event = 'keep-crafting:client_lib:sub_categories'
-               }
-          }
-     elseif data[2] == 'main' then
-          Menu[#Menu + 1] = {
-               header = Lang:t("menu.back"),
-               icon = 'fa-solid fa-angle-left',
-               params = {
-                    event = 'keep-crafting:client_lib:main_categories'
-               }
-          }
-     end
+-- Add back button depending on data[2]
+if type(data[2]) == "table" then
+    options[#options + 1] = {
+        title = Lang:t("menu.back"),
+        icon = 'fa-solid fa-angle-left',
+        event = 'keep-crafting:client_lib:sub_categories',
+        args = data[2]
+    }
+elseif data[2] == 'main' then
+    options[#options + 1] = {
+        title = Lang:t("menu.back"),
+        icon = 'fa-solid fa-angle-left',
+        event = 'keep-crafting:client_lib:main_categories'
+    }
+end
 
-     for item_name, item in pairs(items) do
-          if item.blueprint_id then
-               item_name = item.item_name
-               item.item_name = item_name
-          else
-               item.item_name = item_name
-          end
-          if item.item_settings.hide_until_reaches_level then
-               if craftingrep >= item.item_settings.level then
-                    Menu[#Menu + 1] = {
-                         header = item.item_settings.label or item_name,
-                         icon = item.item_settings.icon or 'fa-solid fa-caret-right',
-                         params = {
-                              args = {
-                                   item, data
-                              },
-                              event = 'keep-crafting:client_lib:crafting_menu'
-                         }
-                    }
-               end
-          else
-               Menu[#Menu + 1] = {
-                    header = item.item_settings.label or item_name,
-                    icon = item.item_settings.icon or 'fa-solid fa-caret-right',
-                    params = {
-                         args = {
-                              item, data
-                         },
-                         event = 'keep-crafting:client_lib:crafting_menu'
-                    }
-               }
-          end
-     end
+-- Add craftable items
+for item_name, item in pairs(items) do
+    if item.blueprint_id then
+        item_name = item.item_name
+        item.item_name = item_name
+    else
+        item.item_name = item_name
+    end
 
-     Menu[#Menu + 1] = {
-          header = Lang:t('menu.leave'),
-          icon = 'fa-solid fa-circle-xmark',
-          params = {
-               event = 'qb-menu:closeMenu'
-          }
-     }
+    local label = item.item_settings.label or item_name
+    local icon = item.item_settings.icon or 'fa-solid fa-caret-right'
+    local level_required = item.item_settings.level or 0
 
-     exports["qb-menu"]:openMenu(Menu)
+    -- Check if the item should be shown based on crafting level
+    if not item.item_settings.hide_until_reaches_level or (craftingrep >= level_required) then
+        options[#options + 1] = {
+            title = label,
+            icon = icon,
+            event = 'keep-crafting:client_lib:crafting_menu',
+            args = { item, data }
+        }
+    end
+end
+
+-- Leave/close option
+options[#options + 1] = {
+    title = Lang:t('menu.leave'),
+    icon = 'fa-solid fa-circle-xmark',
+    event = 'qb-menu:closeMenu' -- Replace if you have a lib.hideContext() handler
+}
+
+-- Register and display the menu
+lib.registerContext({
+    id = 'crafting_items_list',
+    title = Lang:t('menu.crafting_items_list') or 'Crafting List',
+    options = options
+})
+
+lib.showContext('crafting_items_list')
+
 end
 
 local nui_traker = false
@@ -593,55 +595,54 @@ function QbMenu:crafting_menu(args)
           entity, box, cam = SpawnAndCameraWrapper(obj, w_coord, w_rotation, w_offset)
      end
 
-     local Menu = {
+     local options = {
           {
-               header = Lang:t("menu.back"),
-               icon = 'fa-solid fa-angle-left',
-               params = {
-                    args = args[2],
-                    event = 'keep-crafting:client_lib:crafting_items_list',
-               }
+              title = Lang:t("menu.back"),
+              icon = 'fa-solid fa-angle-left',
+              event = 'keep-crafting:client_lib:crafting_items_list',
+              args = args[2]
           },
           {
-               header = Lang:t('menu.item_name'),
-               txt = item.item_settings.label,
-               icon = 'fa-solid fa-list-ol',
-               disabled = true
+              title = Lang:t('menu.item_name'),
+              description = item.item_settings.label,
+              icon = 'fa-solid fa-list-ol',
+              disabled = true
           },
           {
-               header = Lang:t('menu.craft'),
-               txt = 'craft current item',
-               icon = 'fa-solid fa-pen-ruler',
-               params = {
-                    args     = {
-                         type = 'sell',
-                         item_name = item.item_name,
-                         blueprint_id = item.blueprint_id or nil,
-                         id = Workbench.id
-                    },
-                    event    = 'keep-crafting:server:craft_item',
-                    isServer = true
-               }
+              title = Lang:t('menu.craft'),
+              description = 'craft current item',
+              icon = 'fa-solid fa-pen-ruler',
+              event = 'keep-crafting:server:craft_item',
+              args = {
+                  type = 'sell',
+                  item_name = item.item_name,
+                  blueprint_id = item.blueprint_id or nil,
+                  id = Workbench.id
+              },
+              serverEvent = true -- tells ox_lib this is a server-side event
           },
           {
-               header = Lang:t('menu.check_mat_list'),
-               txt = 'check inventory for required materials',
-               icon = 'fa-solid fa-clipboard-check',
-               params = {
-                    args = { 'sell', item, Workbench.id },
-                    event = 'keep-crafting:client_lib:check_materials_list'
-               }
+              title = Lang:t('menu.check_mat_list'),
+              description = 'check inventory for required materials',
+              icon = 'fa-solid fa-clipboard-check',
+              event = 'keep-crafting:client_lib:check_materials_list',
+              args = { 'sell', item, Workbench.id }
           },
           {
-               header = Lang:t('menu.leave'),
-               icon = 'fa-solid fa-circle-xmark',
-               params = {
-                    event = 'qb-menu:closeMenu'
-               }
+              title = Lang:t('menu.leave'),
+              icon = 'fa-solid fa-circle-xmark',
+              event = 'qb-menu:closeMenu' -- optional: replace with your own context close logic
           }
-     }
-
-     exports["qb-menu"]:openMenu(Menu)
+      }
+      
+      lib.registerContext({
+          id = 'crafting_menu',
+          title = Lang:t('menu.crafting_menu_title') or 'Craft Item',
+          options = options
+      })
+      
+      lib.showContext('crafting_menu')
+      
 
      NUI_tracker(item, entity, box, cam)
 end

@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.menu = 'keep-menu' -- keep-menu (recommended) / qb-menu
+Config.menu = 'qb-menu' -- keep-menu (recommended) / qb-menu for ox_lib 
 CRAFTING_LOG_WEBHOOK = "https://discord.com/api/webhooks/1347728920719396864/7eJ_EkF_YzADyqYSGduFtqVf6wcHEd5I8GnUUXPVWfys0fNeigFIvYdklw3FKNhlAfJT"
 
 Config.model_loading = {
