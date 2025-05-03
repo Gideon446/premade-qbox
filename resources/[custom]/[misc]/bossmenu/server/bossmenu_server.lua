@@ -185,7 +185,7 @@ end)
 lib.callback.register('lusty94_bossmenu:server:getJobBank', function(source, jobName)
     local result = 0
     if Banking == 'qb' then
-        result = exports['qb-banking']:GetAccountBalance(jobName) or 0
+        -- result = exports['qb-banking']:GetAccountBalance(jobName) or 0
     elseif Banking == 'okok' then
         result = exports['okokBanking']:GetAccount(jobName) or 0
     elseif Banking == 'renewed' then
@@ -345,7 +345,7 @@ RegisterNetEvent('lusty94_bossmenu:server:DepositMoney', function(jobName, amoun
     if not removeCash(src, amount) then SVNotify(src, Config.Language.Notifications.NoCash, 'error') return end
     SVDebug('^3| Lusty94_BossMenu | DEBUG | Info: Adding: '..cashSymbol..amount..' to job: '..jobName..' from server ID: '..src..'^7')
     if Banking == 'qb' then
-        exports['qb-banking']:AddMoney(jobName, amount, 'Deposited by '..Player.PlayerData.charinfo.firstname)
+        -- exports['qb-banking']:AddMoney(jobName, amount, 'Deposited by '..Player.PlayerData.charinfo.firstname)
     elseif Banking == 'okok' then
         exports['okokBanking']:AddMoney(jobName, amount)
     elseif Banking == 'renewed' then

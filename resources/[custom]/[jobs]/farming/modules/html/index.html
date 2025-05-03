@@ -255,7 +255,7 @@
         });
 
         document.querySelector('.close-btn').addEventListener('click', function() {
-            fetch('https://cozycode-farming/closeUI', {
+            fetch(`https://${GetParentResourceName()}/closeUI`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -267,7 +267,7 @@
         document.getElementById('water-btn').addEventListener('click', function() {
             if (!currentPlant) return;
             
-            fetch('https://cozycode-farming/waterPlant', {
+            fetch(`https://${GetParentResourceName()}/waterPlant`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -281,7 +281,7 @@
         document.getElementById('harvest-btn').addEventListener('click', function() {
             if (!currentPlant || currentPlant.growth < 100) return;
             
-            fetch('https://cozycode-farming/harvestPlant', {
+            fetch(`https://${GetParentResourceName()}/harvestPlant`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

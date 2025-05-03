@@ -130,12 +130,12 @@ function OpenBossMenu(jobName)
                 end,
             }
         end
-        options[#options+1] = {
-            title = 'Deposit Cash',
-            event = 'lusty94_bossmenu:client:DepositMoney',
-            icon = 'fa-solid fa-money-bill',
-            args = { job = jobName },
-        }
+        -- options[#options+1] = {
+        --     title = 'Deposit Cash',
+        --     event = 'lusty94_bossmenu:client:DepositMoney',
+        --     icon = 'fa-solid fa-money-bill',
+        --     args = { job = jobName },
+        -- }
         options[#options+1] = {
             title = 'Read Employee Messages',
             icon = 'fa-solid fa-envelope-open-text',
@@ -211,7 +211,7 @@ function SetBlips()
             AddTextComponentString(blipData.title or 'Job Management')
             EndTextCommandSetBlipName(blip)
             JobBlips[jobName] = blip
-            CLDebug('^3| Lusty94_BossMenu | DEBUG | INFO | Adding management blips for job: '..jobName..' At coords: '.. json.encode(coords.coords.x, coords.coords.y, coords.coords.z)'^7')
+            -- CLDebug('^3| Lusty94_BossMenu | DEBUG | INFO | Adding management blips for job: '..jobName..' At coords: '.. json.encode(coords.coords.x, coords.coords.y, coords.coords.z)'^7')
         end
     end
 end
@@ -222,7 +222,7 @@ CreateThread(function()
     while not LocalPlayer.state.isLoggedIn do Wait(500) end
     PlayerJob = QBCore.Functions.GetPlayerData().job
     for jobName, coords in pairs(Config.Locations) do
-        CLDebug('^3| Lusty94_BossMenu | DEBUG | INFO | Creating target zone for job: '..jobName..' At coords: '.. json.encode(coords.coords)'^7')
+        -- CLDebug('^3| Lusty94_BossMenu | DEBUG | INFO | Creating target zone for job: '..jobName..' At coords: '.. json.encode(coords.coords)'^7')
         if TargetType == 'qb' then
             exports['qb-target']:AddCircleZone('bossMenu_'..jobName, coords.coords, 1.5, {
                 name = 'bossMenu_'..jobName,
