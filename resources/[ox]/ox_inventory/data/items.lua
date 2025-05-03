@@ -1,4 +1,5 @@
 return {
+    -- custom items --
     ["backpack1"] = {
 		label = "Small Backpack",
 		weight = 15,
@@ -174,6 +175,7 @@ return {
         }
     },
 
+    -- ox default items --
     ['testburger'] = {
         label = 'Test Burger',
         weight = 220,
