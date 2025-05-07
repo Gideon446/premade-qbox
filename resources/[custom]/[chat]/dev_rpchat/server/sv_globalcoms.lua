@@ -137,20 +137,20 @@ elseif Config.job then name = GetJobName(source) end
 end)
 
 
-RegisterCommand('me', function(source, args, raw)
-  if source == 0 then
-    print('dev_rpchat: you can\'t use this command from rcon!')
-    return
-  end
-  args = table.concat(args, ' ')
-  local name = GetCharacterName(source)
-  if Config.firstname then name = GetPlayerName2(source) 
-elseif Config.lastname then name = GetLastName(source) 
-elseif Config.job then name = GetJobName(source) end
+-- RegisterCommand('me', function(source, args, raw)
+--   if source == 0 then
+--     print('dev_rpchat: you can\'t use this command from rcon!')
+--     return
+--   end
+--   args = table.concat(args, ' ')
+--   local name = GetCharacterName(source)
+--   if Config.firstname then name = GetPlayerName2(source) 
+-- elseif Config.lastname then name = GetLastName(source) 
+-- elseif Config.job then name = GetJobName(source) end
 
-  TriggerClientEvent('dev_rpchat:sendMe', -1, source, name, args, { 196, 33, 246 })
+--   TriggerClientEvent('dev_rpchat:sendMe', -1, source, name, args, { 196, 33, 246 })
 
-end)
+-- end)
 
 RegisterCommand('do', function(source, args, raw)
   if source == 0 then

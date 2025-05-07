@@ -3,7 +3,7 @@ Config = {
     FakePlayers = false,    -- Show fake players?
     FakePlayerCount = 50,  -- Number of fake players to generate
     ServerEvents = false,   -- Show server events?
-    Debug = true,          -- Show debug messages?
+    Debug = false,          -- Show debug messages?
     UseTimeout = true,     -- Use timeout for callbacks?
     TimeoutDuration = 5000 -- Callback timeout duration (ms)
 }

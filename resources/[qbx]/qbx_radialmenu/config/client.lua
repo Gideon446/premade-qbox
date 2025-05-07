@@ -75,6 +75,12 @@ return {
                             label = 'Take Hostage',
                             event = 'police:client:TakeHostage',
                         },
+                        {
+                            id = 'takemask',
+                            icon = 'masks-theater',
+                            label = 'TakeMask',
+                            event = 'drm-masks:client:TakeMask',
+                        },
                     },
                 },
             },
@@ -168,8 +174,8 @@ return {
                                     id = 'mask',
                                     icon = 'masks-theater',
                                     label = 'Mask',
-                                    event = 'qb-radialmenu:ToggleClothing',
-                                    args = {id = 'Mask'},
+                                    event = 'drm-masks:client:ToggleMask',
+                                    -- args = {id = 'Mask'},
                                 },
                                 {
                                     id = 'vest',
@@ -708,13 +714,13 @@ return {
             Button = 13,
             Name = 'Bracelet',
         },
-        mask = {
-            Func = function() ToggleClothing({'Mask'}) end,
-            Sprite = 'mask',
-            Desc = 'Take your mask off/on',
-            Button = 6,
-            Name = 'Mask',
-        },
+        -- mask = {
+        --     Func = function() ToggleClothing({'Mask'}) end,
+        --     Sprite = 'mask',
+        --     Desc = 'Take your mask off/on',
+        --     Button = 6,
+        --     Name = 'Mask',
+        -- },
 
         pants = {
             Func = function() ToggleClothing({'Pants', true}) end,

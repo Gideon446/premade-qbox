@@ -74,7 +74,7 @@ Config.ReloadSkinCooldown = 5000
 Config.AutomaticFade = false -- Enables automatic fading and hides the Fade section from Hair
 
 Config.DisableComponents = {
-    Masks = false,
+    Masks = true,  -- kool_damon masks config -- 
     UpperBody = false,
     LowerBody = false,
     Bags = false,

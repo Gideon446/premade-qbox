@@ -170,6 +170,16 @@ RegisterServerEvent("illenium-appearance:server:saveAppearance", function(appear
     end
 end)
 
+RegisterServerEvent("illenium-appearance:server:saveAppearance1", function(appearance, player)
+    print(player .. " appearance check" .. json.encode(appearance))
+
+    local citizenID = Framework.GetPlayerID(player)
+    if appearance ~= nil then
+        Framework.SaveAppearance(appearance, citizenID)
+    end
+    TriggerClientEvent('illenium-appearance:client:reloadSkin', player)
+end)
+
 RegisterServerEvent("illenium-appearance:server:chargeCustomer", function(shopType)
     local src = source
     local money = getMoneyForShop(shopType)

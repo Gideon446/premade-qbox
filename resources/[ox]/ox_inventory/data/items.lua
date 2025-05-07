@@ -1,12 +1,36 @@
 return {
     -- custom items --
+    ["mask"] = {
+		label = "Mask",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Hmm you can wear it and do some biz!",
+		allowArmed = true,
+		metadata = {
+			drawableId = 0,
+			textureId = 0,
+		},	
+		client = {
+			image = "mask.png",
+		}
+	},
+    
+    ['maskcreator'] = {
+        name = 'maskcreator',
+        label = 'Mask Creator',
+        weight = 1,
+        image = 'maskcreator.png',
+        stack = true,
+        description = 'Use to get yourself a sweet mask!'
+    },
 
     ["common_case"] = {
         name = "common_case",
         label = "Common Case",
         weight = 2000,
         stack = true,
-        close = false,
+        close = true,
         description = "Some good stuff!"
     },
 
@@ -881,6 +905,7 @@ return {
             image = 'renting_contract.png'
         }
     },
+    -- custom item end --
 
     -- ox default items --
     ['testburger'] = {

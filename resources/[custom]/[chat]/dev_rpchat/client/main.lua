@@ -103,35 +103,35 @@ RegisterNetEvent('dev_rpchat:sendEms', function(playerId, title, message, color)
     end, playerId)
 end)
 
-RegisterNetEvent('dev_rpchat:sendMe', function(playerId, title, message, color)
-    local source = PlayerId()
-    local target = GetPlayerFromServerId(playerId)
+-- RegisterNetEvent('dev_rpchat:sendMe', function(playerId, title, message, color)
+--     local source = PlayerId()
+--     local target = GetPlayerFromServerId(playerId)
 
-    if target ~= -1 then
-        local sourcePed, targetPed = PlayerPedId(), GetPlayerPed(target)
-        local sourceCoords, targetCoords = GetEntityCoords(sourcePed), GetEntityCoords(targetPed)
+--     if target ~= -1 then
+--         local sourcePed, targetPed = PlayerPedId(), GetPlayerPed(target)
+--         local sourceCoords, targetCoords = GetEntityCoords(sourcePed), GetEntityCoords(targetPed)
 
-        if targetPed == source or #(sourceCoords - targetCoords) < 20 then
-            -- Solicitar el nombre completo del jugador al servidor
-            QBCore.Functions.TriggerCallback('dev_rpchat:getPlayerName', function(playerName)
-                if playerName then
-                    TriggerEvent('chat:addMessage', 
-                    {
-                        template =
-                            '<div class="me_box">' ..
-                                '<div class="barra_me"></div>' ..
-                                '<div class="me_label"><i class="fa-solid fa-hands"></i> ME</div>' ..
-								'<div class="player_id_me">{0}</div>' ..
-                                '<div class="player_name_box">{1}</div>' ..
-                                '<div class="message_box">{2}</div>' ..
-                            '</div>',
-                        args = { playerId, playerName, message }
-                    })
-                end
-            end, playerId)
-        end
-    end
-end)
+--         if targetPed == source or #(sourceCoords - targetCoords) < 20 then
+--             -- Solicitar el nombre completo del jugador al servidor
+--             QBCore.Functions.TriggerCallback('dev_rpchat:getPlayerName', function(playerName)
+--                 if playerName then
+--                     TriggerEvent('chat:addMessage', 
+--                     {
+--                         template =
+--                             '<div class="me_box">' ..
+--                                 '<div class="barra_me"></div>' ..
+--                                 '<div class="me_label"><i class="fa-solid fa-hands"></i> ME</div>' ..
+-- 								'<div class="player_id_me">{0}</div>' ..
+--                                 '<div class="player_name_box">{1}</div>' ..
+--                                 '<div class="message_box">{2}</div>' ..
+--                             '</div>',
+--                         args = { playerId, playerName, message }
+--                     })
+--                 end
+--             end, playerId)
+--         end
+--     end
+-- end)
 
 RegisterNetEvent('dev_rpchat:sendDo', function(playerId, title, message, color)
     local source = PlayerId()
