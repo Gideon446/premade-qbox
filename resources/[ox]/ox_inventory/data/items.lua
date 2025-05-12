@@ -1106,6 +1106,10 @@ return {
         label = 'Drivers License',
     },
 
+    ['hunting_license'] = {
+        label = 'Hunting License',
+    },
+
     ['weaponlicense'] = {
         label = 'Weapon License',
     },

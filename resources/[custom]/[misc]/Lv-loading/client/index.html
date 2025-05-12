@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lee Loading Screen</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="./img/logo.png" alt="Server Logo">
+        </div>
+
+        <!-- Typewriter Text -->
+        <div class="typewriter-container">
+            <div class="typewriter-text" id="typewriter"></div>
+        </div>
+        <div class="typewriter-container">
+            <div class="typewriter-text">
+                <p id="line1"></p>
+                <p id="line2"></p>
+                <p id="line3"></p>
+                <p id="line4"></p>
+            </div>
+        </div>
+
+        <!-- Slideshow -->
+        <div class="slideshow"></div>
+
+        <!-- Loading Status -->
+        <div class="loading-status">
+            <div class="loading-text">Initializing...</div>
+        </div>
+
+        <!-- Progress System -->
+        <div class="progress-container">
+            <div class="loading-percentage">0%</div>
+            <div class="loader">
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+
+        <!-- Audio Controls -->
+        <div class="audio-controls">
+            <button id="playPause">▶</button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+        </div>
+
+        <!-- Social Media Buttons -->
+         <!-- Social Media Buttons -->
+         <div class="social-buttons">
+            <a href="https://discord.gg/nkMTBARzz4" target="_blank" class="social-btn discord">
+                <i class="fab fa-discord"></i>
+                <span>Join Discord</span>
+            </a>
+            <a href="https://www.youtube.com/@DreamScripting" target="_blank" class="social-btn youtube">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+            <a href="https://damon.tebex.io/" target="_blank" class="social-btn webstore">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Web Store</span>
+            </a>
+        </div>
+    </div>
+
+    <audio id="backgroundAudio" autoplay>
+        <source src="./audio/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>

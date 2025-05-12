@@ -21,6 +21,12 @@ return {
             backgroundImage = 'https://i.ibb.co/vxvGzg1/card.png',
             prop = 'prop_franklin_dl',
         },
+        ['hunting_license'] = {
+            header = 'Hunting License',
+            background = '#febbbb',
+            backgroundImage = 'https://i.ibb.co/vxvGzg1/card.png',
+            prop = 'prop_franklin_dl',
+        },
         ['weaponlicense'] = {
             header = 'Weapon License',
             background = '#c7ffe5',
