@@ -6,7 +6,8 @@ set steam_webApiKey "none"
 sets tags "default, deployer, qbox"
 
 ## You MAY edit the following:
-sv_licenseKey "cfxk_1bl0Z0IPsuQr1bvVrZMro_IQ1BK"
+# sv_licenseKey ""  # uncommit this line and add you cfg key 
+exec key.cfg  # commit this line after you add your key
 sv_hostname "kool_damon Qbox Premade!"
 sets sv_projectName "kool_damon Qbox Premade!"
 sets sv_projectDesc "kool_damon Qbox Premade!"
@@ -84,6 +85,7 @@ ensure npwd
 
 ## Permissions ##
 add_principal identifier.fivem:7669176 group.admin #kool_damon
+add_principal identifier.license:45d9f75fc8acd37fb0f5f274564fccfef6c7eda1 group.admin #kool_damon
 exec permissions.cfg
 
 ## Miscellaneous ##
