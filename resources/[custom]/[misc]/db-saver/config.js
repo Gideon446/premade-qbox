@@ -1,12 +1,12 @@
 const config = {
     webhook: "",
-    time: 60, // in min
+    time: 0.001, // in min
 
     connection: {
         host: "localhost",
         user: "root",
         password: "",
-        database: "hrpqbox",
+        database: "qboxframework_1515c6",
     },
 
     embed: {
