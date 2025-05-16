@@ -199,7 +199,7 @@ RegisterNetEvent('dev_rpchat:sendLocalOOC', function(playerId, title, message, c
                                 '<div class="oop_label"><i class="fa-solid fa-splotch"></i> OOC</div>' ..
                                 '<div class="player_id_box">ID: {0}</div>' ..
                                 '<div class="player_name_box">Name: {1}</div>' ..
-                                '<div class="player_citizenid_box">CID: {2}</div>' ..
+                                -- '<div class="player_citizenid_box">CID: {2}</div>' ..
                                 '<div class="message_box">{3}</div>' ..
                             '</div>',
                         args = { playerId, playerName, citizenId, message }
@@ -210,7 +210,90 @@ RegisterNetEvent('dev_rpchat:sendLocalOOC', function(playerId, title, message, c
     end
 end)
 
+local lastMessage = {
+    playerId = nil,
+    message = nil,
+    time = 0
+}
 
+
+RegisterNetEvent('dev_rpchat:sendOOC', function(playerId, title, message, color)
+    -- Get local player details
+    local localPlayerId = GetPlayerServerId(PlayerId())
+    
+    -- Only proceed if this is our own message (prevent processing others' messages)
+    if playerId ~= localPlayerId then return end
+
+    QBCore.Functions.TriggerCallback('dev_rpchat:getPlayerDetails', function(playerDetails)
+        if playerDetails then
+            local playerName = playerDetails.name
+            local citizenId = playerDetails.citizenid
+
+            -- Update last message tracker
+            lastMessage = {
+                playerId = playerId,
+                message = message,
+                time = GetGameTimer()
+            }
+
+            -- Display locally (only once)
+            TriggerEvent('chat:addMessage', {
+                template = '<div class="oop_box">' ..
+                    '<div class="barra_oop"></div>' ..
+                    '<div class="oop_label"><i class="fa-solid fa-splotch"></i> OOC</div>' ..
+                    '<div class="player_id_box">ID: {0}</div>' ..
+                    '<div class="player_name_box">Name: {1}</div>' ..
+                    -- '<div class="player_citizenid_box">CID: {2}</div>' ..
+                    '<div class="message_box">{3}</div>' ..
+                '</div>',
+                args = { playerId, playerName, citizenId, message }
+            })
+
+            -- Send to server for broadcasting
+            TriggerServerEvent('dev_rpchat:serverBroadcastOOC', {
+                playerId = playerId,
+                playerName = playerName,
+                citizenId = citizenId,
+                message = message
+            })
+        end
+    end, playerId)
+end)
+
+
+RegisterNetEvent('dev_rpchat:receiveOOC')
+AddEventHandler('dev_rpchat:receiveOOC', function(data)
+    local currentTime = GetGameTimer()
+    
+    -- Check if this is a duplicate message
+    if lastMessage.playerId == data.playerId and 
+       lastMessage.message == data.message and 
+       (currentTime - lastMessage.time) < 1000 then -- 1 second cooldown
+        return
+    end
+
+    -- Update last message tracker
+    lastMessage = {
+        playerId = data.playerId,
+        message = data.message,
+        time = currentTime
+    }
+
+    -- Only show if not from ourselves
+    if data.playerId ~= GetPlayerServerId(PlayerId()) then
+        TriggerEvent('chat:addMessage', {
+            template = '<div class="oop_box">' ..
+                '<div class="barra_oop"></div>' ..
+                '<div class="oop_label"><i class="fa-solid fa-splotch"></i> OOC</div>' ..
+                '<div class="player_id_box">ID: {0}</div>' ..
+                '<div class="player_name_box">Name: {1}</div>' ..
+                -- '<div class="player_citizenid_box">CID: {2}</div>' ..
+                '<div class="message_box">{3}</div>' ..
+            '</div>',
+            args = { data.playerId, data.playerName, data.citizenId, data.message }
+        })
+    end
+end)
 
 RegisterNetEvent('dev_rpchat:sendDados', function(playerId, title, message, color)
 	local source = PlayerId()
