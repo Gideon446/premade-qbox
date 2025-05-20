@@ -1,6 +1,6 @@
 const config = {
     webhook: "",
-    time: 0.001, // in min
+    time: 60, // in min
 
     connection: {
         host: "localhost",

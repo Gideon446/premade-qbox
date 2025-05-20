@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 :root {
-    --color-1: #1E3955;
-    --color-2: #213F5F;
-    --color-3: #2C537B;
-    --color-4: #23405E;
-    --color-5: #152638;
-    --color-6: #121f2c;
-    --color-7: rgb(28, 54, 82);
-    --color-8: #2554cc;
-    --color-9: #6E707C;
-    --color-10: #8f741b;
+    --color-1: #2D2F36; /* Dark slate */
+    --color-2: #383A42; /* Slightly lighter slate */
+    --color-3: #4E91FD; /* Accent Blue */
+    --color-4: #3B3D47; /* Button/hover base */
+    --color-5: #1E1F26; /* Dark background */
+    --color-6: #15161B; /* Even darker */
+    --color-7: #4B4D56; /* Muted gray */
+    --color-8: #5E9BFF; /* Light accent blue */
+    --color-9: #2C2E35; /* Panel background */
+    --color-10: #F0C674; /* Soft yellow for highlights */
 }
 
 body {
@@ -6748,3 +6748,227 @@ input[type="range"].vehicle-info-points-input::-moz-range-track {
 .leaflet-tooltip-right {
 	margin-left: 6px;
 }
+
+
+/* === Enhanced UI Transitions & Animations === */
+
+/* General transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect enhancements */
+.nav-item:hover,
+.profile-title:hover,
+.incidents-title:hover,
+.manage-incidents-title:hover,
+.manage-profile-title:hover,
+.gallery-add-btn:hover,
+.bulletin-add-btn:hover,
+.tags-add-btn:hover,
+.manage-incidents-tags-add-btn:hover,
+.manage-incidents-officers-add-btn:hover,
+.manage-incidents-civilians-add-btn:hover,
+.manage-incidents-evidence-add-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Active item effect */
+.active-nav {
+    animation: pulse-highlight 0.6s ease-in-out;
+}
+
+@keyframes pulse-highlight {
+    0% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Open/Close animations */
+.dashboard-page-container,
+.profile-page-container,
+.incidents-page-container,
+.bolos-page-container,
+.reports-page-container,
+.penalcode-page-container,
+.sop-page-container,
+.dmv-page-container,
+.weapons-page-container,
+.stafflogs-page-container,
+.container-load {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.dashboard-page-container.show,
+.profile-page-container.show,
+.incidents-page-container.show,
+.bolos-page-container.show,
+.reports-page-container.show,
+.penalcode-page-container.show,
+.sop-page-container.show,
+.dmv-page-container.show,
+.weapons-page-container.show,
+.stafflogs-page-container.show,
+.container-load.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Context menu animation */
+.contextmenu {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+/* === Modern UI Behavior and Aesthetic Enhancements === */
+
+/* Fix show/hide flickering and allow smooth transitions */
+.dashboard-page-container,
+.profile-page-container,
+.incidents-page-container,
+.bolos-page-container,
+.reports-page-container,
+.penalcode-page-container,
+.sop-page-container,
+.dmv-page-container,
+.weapons-page-container,
+.stafflogs-page-container,
+.container-load {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.dashboard-page-container.active,
+.profile-page-container.active,
+.incidents-page-container.active,
+.bolos-page-container.active,
+.reports-page-container.active,
+.penalcode-page-container.active,
+.sop-page-container.active,
+.dmv-page-container.active,
+.weapons-page-container.active,
+.stafflogs-page-container.active,
+.container-load.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Glossy and transparent UI panels */
+.dashboard-page-container,
+.profile-page-container,
+.incidents-page-container,
+.bolos-page-container,
+.reports-page-container,
+.penalcode-page-container,
+.sop-page-container,
+.dmv-page-container,
+.weapons-page-container,
+.stafflogs-page-container,
+.container-load,
+.nav-menu,
+.warrants-container,
+.quotes-container,
+.bulletin-container,
+.dispatch-container,
+.profile-container,
+.manage-profile-container,
+.manage-profile-right-container,
+.manage-profile-tags-container,
+.manage-profile-vehs-container,
+.manage-profile-houses-container,
+.manage-profile-gallery-container,
+.incidents-container,
+.manage-incidents-container,
+.associated-incidents-container {
+    background-color: rgba(44, 46, 53, 0.8); /* var(--color-9) with transparency */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.02), 0 2px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: none; /* Not used as per instruction */
+}
+
+/* Improved button-like hover transitions */
+.nav-item,
+.tags-add-btn,
+.gallery-add-btn,
+.bulletin-add-btn,
+.manage-incidents-create,
+.manage-incidents-save,
+.manage-profile-save {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover,
+.tags-add-btn:hover,
+.gallery-add-btn:hover,
+.bulletin-add-btn:hover,
+.manage-incidents-create:hover,
+.manage-incidents-save:hover,
+.manage-profile-save:hover {
+    transform: scale(1.03);
+    background-color: var(--color-8);
+    box-shadow: 0 0 12px rgba(94, 155, 255, 0.3);
+}
+
+/* Rounded scroll container corners and subtle shadows */
+.profile-items,
+.warrants-items,
+.bulletin-items-continer,
+.active-unit-list,
+.active-calls-list,
+.manage-incidents-tags-holder,
+.manage-incidents-officers-holder,
+.manage-incidents-civilians-holder,
+.manage-incidents-evidence-holder {
+    border-radius: 8px;
+    background-color: rgba(30, 31, 38, 0.7);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+.dashboard-page-container,
+.profile-page-container,
+.incidents-page-container,
+.bolos-page-container,
+.reports-page-container,
+.penalcode-page-container,
+.sop-page-container,
+.dmv-page-container,
+.weapons-page-container,
+.stafflogs-page-container,
+.container-load {
+    display: none;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dashboard-page-container.show,
+.profile-page-container.show,
+.incidents-page-container.show,
+.bolos-page-container.show,
+.reports-page-container.show,
+.penalcode-page-container.show,
+.sop-page-container.show,
+.dmv-page-container.show,
+.weapons-page-container.show,
+.stafflogs-page-container.show,
+.container-load.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
