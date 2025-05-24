@@ -1,5 +1,60 @@
 return {
     -- custom items --
+
+    ['d_redchip'] = {
+        label = 'Red key',
+        weight = 100,
+        stack = true,
+        close = true,
+        description = 'Red Decryption key',
+        client = {
+            image = 'redchip.png'
+        }
+    },
+
+    ['d_greenchip'] = {
+        label = 'Green key',
+        weight = 100,
+        stack = true,
+        close = true,
+        description = 'Green Decryption key',
+        client = {
+            image = 'greenchip.png'
+        }
+    },
+
+    ['d_bluechip'] = {
+        label = 'Blue key',
+        weight = 100,
+        stack = true,
+        close = true,
+        description = 'Blue Decryption key',
+        client = {
+            image = 'bluechip.png'
+        }
+    },
+
+    ['d_hak_kit2'] = {
+        label = 'Hacking Drive',
+        weight = 100,
+        stack = true,
+        close = true,
+        description = 'Hacking Usb Drive',
+        client = {
+            image = 'hak_kit2.png'
+        }
+    },
+
+    ['drill_gh'] = {
+        label = 'Gun Heist Drill',
+        weight = 10000,
+        stack = false,
+        close = false,
+        description = 'The real deal to get stuff...',
+        client = {
+            image = 'drill_gh.png'
+        }
+    },
     ["mask"] = {
 		label = "Mask",
 		weight = 1,

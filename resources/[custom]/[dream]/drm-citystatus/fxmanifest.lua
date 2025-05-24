@@ -1,11 +1,9 @@
-shared_script '@WaveShield/resource/waveshield.lua' --this line was automatically written by WaveShield
-
 fx_version 'cerulean'
 lua54 'yes'
 games { 'gta5' }
-author 'Dream Scripts'
-description 'An Interactive CoolDown System For Fivem [QBCore]'
-version '1.5.0'
+author 'Dream Scripting'
+description 'An Interactive CoolDown System For Fivem [QBCore/QBx_Core]'
+version '1.7.7'
 
 client_scripts {
     'client/**.lua',
@@ -28,6 +26,7 @@ files {
 ui_page {'ui/index.html'}
 
 escrow_ignore { 
-    'config.lua'
+    'config.lua',
+    'server/editable.lua',
 }
 dependency '/assetpacks'

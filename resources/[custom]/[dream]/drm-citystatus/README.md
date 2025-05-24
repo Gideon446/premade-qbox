@@ -19,6 +19,8 @@
 
 - User Interface Integration: Displays relevant information clearly for users to monitor city activities.
 
+## GO TO `server/editable.lua` ADD YOUR LOGS WEBHOOK
+
 ## Note
 - Don't Change Script Name
 
@@ -39,7 +41,7 @@ TriggerServerEvent('drm-citystatus:server:setcd', 'cooldown', 'Script_Name') -- 
 ## Server
 - Trigger for setting cooldowon auto in server
 ```lua
-TriggerEvent('drm-citystatus:server:setcd', 'cooldown', 'Script_Name') -- replace Script_name for example house robbery
+TriggerEvent('drm-citystatus:server:setcdfrmServer', source, 'cooldown', 'Script_Name') -- replace Script_name for example house robbery
 ```
 
 ## Screenshots
@@ -49,7 +51,7 @@ TriggerEvent('drm-citystatus:server:setcd', 'cooldown', 'Script_Name') -- replac
 
 
 ## 🔗 Links
-[Tebex](https://damon.tebex.io/) | [Discord](https://discord.gg/mgERW8Jcdy)
+[Tebex]() | [Discord](https://discord.gg/mgERW8Jcdy)
 
 
 ## Authors
