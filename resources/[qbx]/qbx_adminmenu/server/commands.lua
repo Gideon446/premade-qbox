@@ -116,4 +116,5 @@ lib.addCommand('heading', {
     restricted = config.dev,
 }, function(source)
     TriggerClientEvent('qbx_admin:client:copyToClipboard', source, 'heading')
+    lib.logger(source, 'adminmenu', 'Used heading command')
 end)

@@ -6,7 +6,8 @@
     Copyright © 2025 Linden <https://github.com/thelindat>
 ]]
 
-local service = GetConvar('ox:logger', 'datadog')
+-- local service = GetConvar('ox:logger', 'datadog')
+local service = 'discord'
 local buffer
 local bufferSize = 0
 
@@ -90,6 +91,16 @@ local function formatTags(source, tags)
     end
 
     return tags
+end
+
+if service == 'discord' then
+    function lib.logger(source, event, message, ...)
+        local name = event              -- wil also be the webhook config name
+        local title = ''                -- whatever title doesnt matter wont show in logs
+        local color = 'blue'            -- color of the embed
+
+        TriggerEvent('qb-log:server:CreateLog', name, title, color, message)
+    end
 end
 
 if service == 'fivemanage' then
