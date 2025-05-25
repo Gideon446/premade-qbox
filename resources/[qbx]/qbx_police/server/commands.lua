@@ -16,6 +16,10 @@ local function dnaHash(s)
     end)
 end
 
+lib.addCommand('testwebhook',{help = 'test purpose'}, function(source)
+    TriggerEvent('qb-log:server:CreateLog', 'testwebhook', 'Tesging', 'blue', "This is a test for dream logger", true)
+end)
+
 lib.addCommand('spikestrip', {help = locale('commands.place_spike')}, function(source)
     local player = exports.qbx_core:GetPlayer(source)
     if not checkLeoAndOnDuty(player) then return end

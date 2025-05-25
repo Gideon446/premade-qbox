@@ -18,10 +18,7 @@ client_scripts {
     '**/client.lua'
 }
 
-server_scripts {
-    '**/server.lua',
-    '**/logs.lua'
-}
+server_scripts {'**/server.lua', '**/logs.lua'}
 
 files {
     'locales/*.json',
