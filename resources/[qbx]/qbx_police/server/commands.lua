@@ -17,7 +17,7 @@ local function dnaHash(s)
 end
 
 lib.addCommand('testwebhook',{help = 'test purpose'}, function(source)
-    TriggerEvent('qb-log:server:CreateLog', 'testwebhook', 'Tesging', 'blue', "This is a test for dream logger", true)
+    lib.logger(source, 'policetestlog', 'This is a test for fivemerr log')
 end)
 
 lib.addCommand('spikestrip', {help = locale('commands.place_spike')}, function(source)

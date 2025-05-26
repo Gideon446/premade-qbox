@@ -7,7 +7,7 @@
 ]]
 
 -- local service = GetConvar('ox:logger', 'datadog')
-local service = 'discord'
+local service = 'fivemerr'
 local buffer
 local bufferSize = 0
 
@@ -100,6 +100,50 @@ if service == 'discord' then
         local color = 'blue'            -- color of the embed
 
         TriggerEvent('qb-log:server:CreateLog', name, title, color, message)
+    end
+end
+
+if service == 'fivemerr' then
+    local key = '520f1355d5471004c70325b38a501f32'
+
+    if key ~= '' then
+        local endpoint = 'https://api.fivemerr.com/v1/logs'
+
+        local headers = {
+            ['Authorization'] = key,
+            ['Content-Type'] = 'application/json',
+            ['User-Agent'] = 'ox_lib'
+        }
+
+        function lib.logger(source, event, message, ...)
+            if not buffer then
+                buffer = {}
+
+                SetTimeout(500, function()
+                    PerformHttpRequest(endpoint, function(status, _, _, response)
+                        if status ~= 200 then 
+                            if type(response) == 'string' then
+                                response = json.decode(response) or response
+                                badResponse(endpoint, status, response)
+                            end
+                        end
+                    end, 'POST', json.encode(buffer), headers)
+
+                    buffer = nil
+                end)
+            end
+
+            buffer = {
+                level = "info",
+                message = event .. " - " .. message,
+                resource = cache.resource,
+                metadata = {
+                    event = event,
+                    playerid = source,
+                    tags = formatTags(source, ... and string.strjoin(',', string.tostringall(...)) or nil),
+                }
+            }
+        end
     end
 end
 
