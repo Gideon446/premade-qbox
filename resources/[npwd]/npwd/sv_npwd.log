@@ -1690,3 +1690,20 @@
 {"level":"info","message":"Executed query (SELECT COUNT(*) as count\n                       FROM information_schema.tables\n                       WHERE table_schema = ?\n                         AND table_name = ? [\"QboxFramework_1515C6\",\"players\"]) in 547.2827ms'","module":"DBInterface","timestamp":"2025-05-25T21:12:14.978Z"}
 {"level":"info","message":"Executed query (SHOW COLUMNS IN players []) in 55.3907ms'","module":"DBInterface","timestamp":"2025-05-25T21:12:15.035Z"}
 {"level":"debug","message":"Database schema successfully validated","module":"boot","timestamp":"2025-05-25T21:12:15.035Z"}
+{"level":"debug","message":"Marketplace service started","module":"marketplace","timestamp":"2025-05-26T12:16:31.546Z"}
+{"level":"debug","message":"Call service started","module":"calls","timestamp":"2025-05-26T12:16:31.549Z"}
+{"level":"debug","message":"Player Service started","module":"player","timestamp":"2025-05-26T12:16:31.549Z"}
+{"level":"info","message":"Loading QBX bridge....","timestamp":"2025-05-26T12:16:31.550Z"}
+{"level":"info","message":"QBX bridge initialized","timestamp":"2025-05-26T12:16:31.550Z"}
+{"level":"debug","message":"Boot service started","module":"boot","timestamp":"2025-05-26T12:16:31.551Z"}
+{"level":"debug","message":"Messages service started","module":"messages","timestamp":"2025-05-26T12:16:31.551Z"}
+{"level":"debug","message":"Notes service started","module":"notes","timestamp":"2025-05-26T12:16:31.552Z"}
+{"level":"debug","message":"Contacts service started","module":"contact","timestamp":"2025-05-26T12:16:31.552Z"}
+{"level":"debug","message":"Photo service started","module":"photo","timestamp":"2025-05-26T12:16:31.575Z"}
+{"level":"debug","message":"Twitter service started","module":"twitter","timestamp":"2025-05-26T12:16:31.575Z"}
+{"level":"debug","message":"Match service started","module":"match","timestamp":"2025-05-26T12:16:31.576Z"}
+{"level":"debug","message":"Beginning database schema validation","module":"boot","timestamp":"2025-05-26T12:16:34.807Z"}
+{"level":"info","message":"Successfully started","timestamp":"2025-05-26T12:16:34.840Z"}
+{"level":"info","message":"Executed query (SELECT COUNT(*) as count\n                       FROM information_schema.tables\n                       WHERE table_schema = ?\n                         AND table_name = ? [\"QboxFramework_1515C6\",\"players\"]) in 383.1839ms'","module":"DBInterface","timestamp":"2025-05-26T12:16:35.191Z"}
+{"level":"info","message":"Executed query (SHOW COLUMNS IN players []) in 72.9912ms'","module":"DBInterface","timestamp":"2025-05-26T12:16:35.264Z"}
+{"level":"debug","message":"Database schema successfully validated","module":"boot","timestamp":"2025-05-26T12:16:35.265Z"}
