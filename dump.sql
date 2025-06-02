@@ -896,7 +896,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   KEY `id` (`id`),
   KEY `last_updated` (`last_updated`),
   KEY `license` (`license`)
-) ENGINE = InnoDB AUTO_INCREMENT = 443 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 516 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: playerskins
@@ -1031,6 +1031,24 @@ CREATE TABLE IF NOT EXISTS `vehicle_financing` (
   PRIMARY KEY (`vehicleId`),
   CONSTRAINT `vehicleId` FOREIGN KEY (`vehicleId`) REFERENCES `player_vehicles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+# ------------------------------------------------------------
+# SCHEMA DUMP FOR TABLE: vehicle_mileage
+# ------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `vehicle_mileage` (
+  `plate` varchar(50) NOT NULL,
+  `mileage` double NOT NULL DEFAULT 0,
+  `last_oil_change` double NOT NULL DEFAULT 0,
+  `last_oil_filter_change` double NOT NULL DEFAULT 0,
+  `last_air_filter_change` double NOT NULL DEFAULT 0,
+  `last_tire_change` double NOT NULL DEFAULT 0,
+  `last_brakes_change` double NOT NULL DEFAULT 0,
+  `brake_wear` double NOT NULL DEFAULT 0,
+  `last_clutch_change` double NOT NULL DEFAULT 0,
+  `clutch_wear` double NOT NULL DEFAULT 0,
+  PRIMARY KEY (`plate`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: weed_plants
@@ -1204,7 +1222,14 @@ VALUES
 INSERT INTO
   `multijobs` (`citizenid`, `jobdata`)
 VALUES
-  ('AB8CT198', '{\"police\":3,\"cardealer\":2}');
+  (
+    'AB8CT198',
+    '{\"police\":3,\"cardealer\":2,\"ambulance\":1}'
+  );
+INSERT INTO
+  `multijobs` (`citizenid`, `jobdata`)
+VALUES
+  ('N1W934Z7', '{\"police\":2}');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: npwd_calls
@@ -1420,7 +1445,11 @@ VALUES
 INSERT INTO
   `player_groups` (`citizenid`, `group`, `type`, `grade`)
 VALUES
-  ('AB8CT198', 'police', 'job', 3);
+  ('AB8CT198', 'ambulance', 'job', 1);
+INSERT INTO
+  `player_groups` (`citizenid`, `group`, `type`, `grade`)
+VALUES
+  ('N1W934Z7', 'police', 'job', 2);
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: player_houses
@@ -1493,16 +1522,16 @@ VALUES
     1,
     'license2:45d9f75fc8acd37fb0f5f274564fccfef6c7eda1',
     'Damon </>',
-    '{\"cash\":500,\"crypto\":0,\"bank\":8125}',
-    '{\"cid\":1,\"account\":\"US04QBX1259116628\",\"nationality\":\"American\",\"backstory\":\"placeholder backstory\",\"firstname\":\"Dsadsa\",\"gender\":0,\"phone\":\"4536397561\",\"lastname\":\"Dsads\",\"birthdate\":\"2006-12-31\"}',
-    '{\"label\":\"LSPD\",\"grade\":{\"name\":\"Lieutenant\",\"level\":3},\"isboss\":false,\"bankAuth\":false,\"name\":\"police\",\"onduty\":true,\"type\":\"leo\",\"payment\":125}',
-    '{\"label\":\"No Gang\",\"grade\":{\"name\":\"Unaffiliated\",\"level\":0},\"isboss\":false,\"name\":\"none\",\"bankAuth\":false}',
-    '{\"x\":-937.002197265625,\"y\":-378.3824157714844,\"z\":38.95166015625,\"w\":87.87401580810547}',
-    '{\"status\":[],\"callsign\":\"NO CALLSIGN\",\"armor\":0,\"attachmentcraftingrep\":0,\"criminalrecord\":{\"hasRecord\":false},\"thirst\":100,\"phone\":[],\"craftingrep\":0,\"jobrep\":{\"hotdog\":0,\"tow\":0,\"trucker\":0,\"taxi\":0},\"bloodtype\":\"B+\",\"isdead\":false,\"hunger\":100,\"injail\":0,\"phonedata\":{\"SerialNumber\":59458618,\"InstalledApps\":[]},\"fingerprint\":\"8526L7XGI2SE88E\",\"inlaststand\":false,\"jailitems\":[],\"health\":200,\"ishandcuffed\":false,\"tracker\":false,\"stress\":0,\"dealerrep\":0,\"walletid\":\"QB-32825114\",\"licences\":{\"driver\":true,\"id\":true,\"weapon\":false},\"inside\":{\"apartment\":[]}}',
-    '[{\"name\":\"money\",\"slot\":1,\"count\":500},{\"name\":\"phone\",\"slot\":2,\"count\":1},{\"name\":\"id_card\",\"metadata\":{\"cardtype\":\"id_card\",\"birthdate\":\"2006-12-31\",\"firstname\":\"Dsadsa\",\"citizenid\":\"AB8CT198\",\"sex\":\"M\",\"nationality\":\"American\",\"badge\":\"none\",\"lastname\":\"Dsads\"},\"slot\":3,\"count\":1},{\"name\":\"driver_license\",\"metadata\":{\"cardtype\":\"driver_license\",\"birthdate\":\"2006-12-31\",\"firstname\":\"Dsadsa\",\"citizenid\":\"AB8CT198\",\"sex\":\"M\",\"nationality\":\"American\",\"badge\":\"none\",\"lastname\":\"Dsads\"},\"slot\":4,\"count\":1},{\"name\":\"WEAPON_PISTOL\",\"metadata\":{\"serial\":\"769187AQY954155\",\"ammo\":11,\"registered\":\"Dsadsa Dsads\",\"durability\":96.00000000000004,\"components\":[]},\"slot\":5,\"count\":1},{\"name\":\"ammo-45\",\"slot\":6,\"count\":10},{\"name\":\"ammo-9\",\"slot\":7,\"count\":49}]',
+    '{\"cash\":500,\"crypto\":0,\"bank\":8625}',
+    '{\"nationality\":\"American\",\"birthdate\":\"2006-12-31\",\"phone\":\"4536397561\",\"backstory\":\"placeholder backstory\",\"account\":\"US04QBX1259116628\",\"firstname\":\"Dsadsa\",\"cid\":1,\"lastname\":\"Dsads\",\"gender\":0}',
+    '{\"grade\":{\"name\":\"Paramedic\",\"level\":1},\"bankAuth\":false,\"onduty\":true,\"payment\":75,\"isboss\":false,\"type\":\"ems\",\"name\":\"ambulance\",\"label\":\"EMS\"}',
+    '{\"bankAuth\":false,\"isboss\":false,\"grade\":{\"name\":\"Unaffiliated\",\"level\":0},\"name\":\"none\",\"label\":\"No Gang\"}',
+    '{\"x\":-975.6395263671875,\"y\":-375.6131896972656,\"z\":37.82275390625,\"w\":172.91339111328126}',
+    '{\"isdead\":false,\"licences\":{\"weapon\":false,\"id\":true,\"driver\":true},\"bloodtype\":\"B+\",\"thirst\":50.60000000000004,\"inside\":{\"apartment\":[]},\"attachmentcraftingrep\":0,\"phone\":[],\"jobrep\":{\"trucker\":0,\"taxi\":0,\"hotdog\":0,\"tow\":0},\"craftingrep\":0,\"hunger\":45.39999999999996,\"tracker\":false,\"phonedata\":{\"InstalledApps\":[],\"SerialNumber\":59458618},\"health\":200,\"callsign\":\"NO CALLSIGN\",\"armor\":0,\"status\":[],\"jailitems\":[],\"inlaststand\":false,\"injail\":0,\"fingerprint\":\"8526L7XGI2SE88E\",\"walletid\":\"QB-32825114\",\"dealerrep\":0,\"stress\":0,\"criminalrecord\":{\"hasRecord\":false},\"ishandcuffed\":false}',
+    '[{\"metadata\":{\"serial\":\"769187AQY954155\",\"registered\":\"Dsadsa Dsads\",\"ammo\":11,\"components\":[],\"durability\":96.00000000000004},\"name\":\"WEAPON_PISTOL\",\"count\":1,\"slot\":1},{\"name\":\"money\",\"count\":500,\"slot\":2},{\"name\":\"phone\",\"count\":1,\"slot\":3},{\"metadata\":{\"firstname\":\"Dsadsa\",\"lastname\":\"Dsads\",\"sex\":\"M\",\"citizenid\":\"AB8CT198\",\"birthdate\":\"2006-12-31\",\"cardtype\":\"id_card\",\"nationality\":\"American\",\"badge\":\"none\"},\"name\":\"id_card\",\"count\":1,\"slot\":4},{\"metadata\":{\"firstname\":\"Dsadsa\",\"lastname\":\"Dsads\",\"sex\":\"M\",\"citizenid\":\"AB8CT198\",\"birthdate\":\"2006-12-31\",\"cardtype\":\"driver_license\",\"nationality\":\"American\",\"badge\":\"none\"},\"name\":\"driver_license\",\"count\":1,\"slot\":5},{\"name\":\"ammo-45\",\"count\":10,\"slot\":6},{\"name\":\"ammo-9\",\"count\":49,\"slot\":7}]',
     '4536397561',
-    '2025-05-20 17:16:50',
-    '2025-05-20 17:16:50'
+    '2025-06-02 22:57:04',
+    '2025-06-02 22:57:04'
   );
 INSERT INTO
   `players` (
@@ -1531,16 +1560,16 @@ VALUES
     2,
     'license2:45d9f75fc8acd37fb0f5f274564fccfef6c7eda1',
     'Damon </>',
-    '{\"cash\":500,\"bank\":5090,\"crypto\":0}',
-    '{\"lastname\":\"Walker\",\"account\":\"US05QBX1145517890\",\"phone\":\"3677875738\",\"firstname\":\"Damon\",\"cid\":2,\"gender\":0,\"birthdate\":\"2006-12-31\",\"backstory\":\"placeholder backstory\",\"nationality\":\"Algerian\"}',
-    '{\"isboss\":false,\"onduty\":true,\"bankAuth\":false,\"grade\":{\"name\":\"Freelancer\",\"level\":0},\"label\":\"Civilian\",\"name\":\"unemployed\",\"payment\":10}',
-    '{\"isboss\":false,\"grade\":{\"name\":\"Unaffiliated\",\"level\":0},\"label\":\"No Gang\",\"name\":\"none\",\"bankAuth\":false}',
-    '{\"x\":-667.2659301757813,\"y\":-1104.6065673828126,\"z\":14.6373291015625,\"w\":249.44882202148438}',
-    '{\"status\":[],\"walletid\":\"QB-23856967\",\"bloodtype\":\"A+\",\"phone\":[],\"stress\":0,\"phonedata\":{\"InstalledApps\":[],\"SerialNumber\":53764792},\"licences\":{\"id\":true,\"driver\":true,\"weapon\":false},\"criminalrecord\":{\"hasRecord\":false},\"attachmentcraftingrep\":0,\"injail\":0,\"fingerprint\":\"JS01SNSY56B26C1\",\"inlaststand\":false,\"jobrep\":{\"hotdog\":0,\"trucker\":0,\"tow\":0,\"taxi\":0},\"thirst\":31.60000000000004,\"craftingrep\":0,\"ishandcuffed\":false,\"health\":200,\"jailitems\":[],\"callsign\":\"NO CALLSIGN\",\"hunger\":24.39999999999995,\"isdead\":false,\"armor\":0,\"tracker\":false,\"dealerrep\":0,\"inside\":{\"apartment\":[]}}',
-    '[{\"slot\":1,\"count\":500,\"name\":\"money\"},{\"slot\":2,\"count\":1,\"name\":\"phone\"},{\"metadata\":{\"birthdate\":\"2006-12-31\",\"nationality\":\"Algerian\",\"sex\":\"M\",\"badge\":\"none\",\"firstname\":\"Damon\",\"citizenid\":\"N1W934Z7\",\"cardtype\":\"id_card\",\"lastname\":\"Walker\"},\"slot\":3,\"count\":1,\"name\":\"id_card\"},{\"metadata\":{\"birthdate\":\"2006-12-31\",\"nationality\":\"Algerian\",\"sex\":\"M\",\"badge\":\"none\",\"firstname\":\"Damon\",\"citizenid\":\"N1W934Z7\",\"cardtype\":\"driver_license\",\"lastname\":\"Walker\"},\"slot\":4,\"count\":1,\"name\":\"driver_license\"}]',
+    '{\"cash\":123029926,\"crypto\":0,\"bank\":5820}',
+    '{\"nationality\":\"Algerian\",\"gender\":0,\"firstname\":\"Damon\",\"backstory\":\"placeholder backstory\",\"phone\":\"3677875738\",\"cid\":2,\"account\":\"US05QBX1145517890\",\"birthdate\":\"2006-12-31\",\"lastname\":\"Walker\"}',
+    '{\"grade\":{\"level\":2,\"name\":\"Sergeant\"},\"name\":\"police\",\"type\":\"leo\",\"label\":\"LSPD\",\"payment\":100,\"bankAuth\":false,\"isboss\":false,\"onduty\":true}',
+    '{\"grade\":{\"level\":0,\"name\":\"Unaffiliated\"},\"name\":\"none\",\"isboss\":false,\"label\":\"No Gang\",\"bankAuth\":false}',
+    '{\"x\":26.98022270202636,\"y\":-1347.151611328125,\"z\":29.4820556640625,\"w\":246.61416625976563}',
+    '{\"isdead\":false,\"criminalrecord\":{\"hasRecord\":false},\"phonedata\":{\"InstalledApps\":[],\"SerialNumber\":53764792},\"callsign\":\"NO CALLSIGN\",\"ishandcuffed\":false,\"hunger\":62.19999999999997,\"jailitems\":[],\"injail\":0,\"inlaststand\":false,\"stress\":0,\"thirst\":65.80000000000003,\"inside\":{\"apartment\":[]},\"jobrep\":{\"tow\":0,\"taxi\":0,\"hotdog\":0,\"trucker\":0},\"bloodtype\":\"A+\",\"phone\":[],\"craftingrep\":0,\"health\":200,\"attachmentcraftingrep\":0,\"armor\":0,\"licences\":{\"id\":true,\"weapon\":false,\"driver\":true},\"fingerprint\":\"JS01SNSY56B26C1\",\"walletid\":\"QB-23856967\",\"dealerrep\":0,\"tracker\":false,\"status\":[]}',
+    '[{\"name\":\"d_bluechip\",\"slot\":1,\"count\":16},{\"name\":\"d_redchip\",\"slot\":2,\"count\":16},{\"name\":\"d_greenchip\",\"slot\":3,\"count\":16},{\"name\":\"d_hak_kit2\",\"slot\":4,\"count\":15},{\"name\":\"WEAPON_HEAVYPISTOL\",\"slot\":5,\"metadata\":{\"durability\":100,\"components\":[],\"registered\":\"Damon Walker\",\"serial\":\"281816QMR744220\",\"ammo\":0},\"count\":1},{\"name\":\"money\",\"slot\":6,\"count\":123029926},{\"name\":\"phone\",\"slot\":7,\"count\":1},{\"name\":\"WEAPON_SNSPISTOL\",\"slot\":8,\"metadata\":{\"durability\":100,\"components\":[],\"registered\":\"Damon Walker\",\"serial\":\"565745LDY203883\",\"ammo\":0},\"count\":1},{\"name\":\"id_card\",\"slot\":11,\"metadata\":{\"nationality\":\"Algerian\",\"birthdate\":\"2006-12-31\",\"firstname\":\"Damon\",\"lastname\":\"Walker\",\"citizenid\":\"N1W934Z7\",\"cardtype\":\"id_card\",\"sex\":\"M\",\"badge\":\"none\"},\"count\":1},{\"name\":\"driver_license\",\"slot\":12,\"metadata\":{\"nationality\":\"Algerian\",\"birthdate\":\"2006-12-31\",\"firstname\":\"Damon\",\"lastname\":\"Walker\",\"citizenid\":\"N1W934Z7\",\"cardtype\":\"driver_license\",\"sex\":\"M\",\"badge\":\"none\"},\"count\":1},{\"name\":\"WEAPON_SNSPISTOL\",\"slot\":13,\"metadata\":{\"durability\":100,\"components\":[],\"registered\":\"Damon Walker\",\"serial\":\"242013CIN930025\",\"ammo\":0},\"count\":1},{\"name\":\"WEAPON_HEAVYPISTOL\",\"slot\":16,\"metadata\":{\"durability\":100,\"components\":[],\"registered\":\"Damon Walker\",\"serial\":\"963347CDB906194\",\"ammo\":0},\"count\":1},{\"name\":\"WEAPON_SNSPISTOL\",\"slot\":21,\"metadata\":{\"durability\":100,\"components\":[],\"registered\":\"Damon Walker\",\"serial\":\"312109UIR301279\",\"ammo\":0},\"count\":1},{\"name\":\"WEAPON_HEAVYPISTOL\",\"slot\":17,\"metadata\":{\"durability\":100,\"components\":[],\"registered\":\"Damon Walker\",\"serial\":\"957931FZX500743\",\"ammo\":0},\"count\":1}]',
     '3677875738',
-    '2025-05-21 20:33:22',
-    '2025-05-20 17:50:13'
+    '2025-05-30 04:23:25',
+    '2025-05-30 04:23:25'
   );
 
 # ------------------------------------------------------------
@@ -1658,16 +1687,16 @@ INSERT INTO
 VALUES
   (
     'AB8CT198',
-    '{\"daily\":[\"SignIn\"],\"freeClaims\":[],\"playtime\":[],\"premium\":false,\"premiumClaims\":[],\"purchasedate\":0,\"tier\":13,\"weekly\":[],\"xp\":850}',
-    '2025-05-20 17:15:00'
+    '{\"daily\":[\"SignIn\"],\"freeClaims\":[],\"playtime\":[],\"premium\":false,\"premiumClaims\":[],\"purchasedate\":0,\"tier\":17,\"weekly\":[],\"xp\":100}',
+    '2025-06-02 22:55:00'
   );
 INSERT INTO
   `uniq_battlepass` (`owner`, `battlepass`, `lastupdated`)
 VALUES
   (
     'N1W934Z7',
-    '{\"daily\":[\"SignIn\"],\"freeClaims\":[],\"playtime\":[],\"premium\":false,\"premiumClaims\":[],\"purchasedate\":0,\"tier\":4,\"weekly\":[],\"xp\":800}',
-    '2025-05-21 20:35:00'
+    '{\"daily\":[\"SignIn\"],\"freeClaims\":[],\"playtime\":[],\"premium\":false,\"premiumClaims\":[],\"purchasedate\":0,\"tier\":10,\"weekly\":[],\"xp\":300}',
+    '2025-05-30 04:20:00'
   );
 
 # ------------------------------------------------------------
@@ -1695,6 +1724,11 @@ VALUES
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: vehicle_financing
+# ------------------------------------------------------------
+
+
+# ------------------------------------------------------------
+# DATA DUMP FOR TABLE: vehicle_mileage
 # ------------------------------------------------------------
 
 
