@@ -3,7 +3,7 @@ lua54 'yes'
 games { 'gta5' }
 author 'Dream Scripting'
 description 'An Interactive CoolDown System For Fivem [QBCore/QBx_Core]'
-version '1.7.7'
+version '1.8.2'
 
 client_scripts {
     'client/**.lua',
